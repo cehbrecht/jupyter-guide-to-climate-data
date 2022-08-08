@@ -1,0 +1,8 @@
+format: jb-book
+root: intro
+chapters:
+- file: SubsettingFromCDS
+- file: Regridding
+- file: Provenance
+- file: ESGF
+- file: CLINT
