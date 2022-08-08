@@ -1,5 +1,8 @@
 format: jb-book
 root: intro
 chapters:
-- file: subsetting
-- file: cds-subset-cmip6
+- file: SubsettingFromCDS
+- file: Regridding
+- file: Provenance
+- file: ESGF
+- file: CLINT

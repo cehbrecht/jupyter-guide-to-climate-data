@@ -8,6 +8,9 @@ https://jupyterbook.org/en/stable/intro.html
 Other book examples:
 https://github.com/bvanderlei/jupyter-guide-to-linear-algebra
 
+Chat:
+https://gitter.im/ENES-CDI/enes-summer-school
+
 
 ## Build from Source
 
