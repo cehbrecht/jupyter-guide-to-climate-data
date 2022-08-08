@@ -4,7 +4,19 @@ channels:
 dependencies:
 - pip
 - python>=3.7
+# jupyter book  
 - sphinx
 - jupyter-book
-- jupyterlab  
+# jupyter lab  
+- jupyterlab
+# rooki  
+- birdy
+- beautifulsoup4
+- pymetalink
+- owslib
+- pyproj>=3.0.1
+# open xarray results
+- netcdf4
 - xarray  
+- pip:
+  - rooki
