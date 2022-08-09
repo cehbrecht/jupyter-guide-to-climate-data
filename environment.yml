@@ -11,13 +11,18 @@ dependencies:
 - jupyterlab
 # publish book
 - ghp-import
+# cdo
+- cdo
+- python-cdo  
+# esgf
+- esgf-pyclient
 # rooki  
 - birdy
 - beautifulsoup4
 - pymetalink
 - owslib
 - pyproj>=3.0.1
-# open xarray results
+# xarray 
 - netcdf4
 - xarray  
 - pip:
