@@ -27,7 +27,7 @@ conda activate climate-guide
 
 Build book:
 ```
-jupyter-book build .
+jupyter-book build --all .
 ```
 
 Show build pages:
