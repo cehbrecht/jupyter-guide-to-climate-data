@@ -113,23 +113,23 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="SubsettingFromCDS.html">
-   Run subset by time operation
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="Regridding.html">
    Regridding
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Provenance.html">
-   Provenance
+  <a class="reference internal" href="esgf-subset-cmip6.html">
+   Subset CMIP6 Datasets with xarray
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="ESGF.html">
-   ESGF
+  <a class="reference internal" href="rook-subset-cmip6.html">
+   Run subset by time operation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Provenance.html">
+   Provenance
   </a>
  </li>
  <li class="toctree-l1">
@@ -274,6 +274,11 @@ title="Print to PDF"
    Build from Source
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#publish-book-to-gh-pages">
+   Publish book to gh-pages
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -296,6 +301,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#build-from-source">
    Build from Source
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#publish-book-to-gh-pages">
+   Publish book to gh-pages
   </a>
  </li>
 </ul>
@@ -334,6 +344,13 @@ title="Print to PDF"
 </div>
 <p>Show build pages:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">firefox</span> <span class="n">_build</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
+</section>
+<section id="publish-book-to-gh-pages">
+<h2>Publish book to gh-pages<a class="headerlink" href="#publish-book-to-gh-pages" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://jupyterbook.org/en/stable/publish/gh-pages.html">https://jupyterbook.org/en/stable/publish/gh-pages.html</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ghp</span><span class="o">-</span><span class="kn">import</span> <span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">p</span> <span class="o">-</span><span class="n">f</span> <span class="n">_build</span><span class="o">/</span><span class="n">html</span>
 </pre></div>
 </div>
 </section>

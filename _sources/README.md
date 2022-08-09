@@ -34,3 +34,13 @@ Show build pages:
 ```
 firefox _build/html/index.html
 ```
+
+## Publish book to gh-pages
+
+https://jupyterbook.org/en/stable/publish/gh-pages.html
+
+```
+ghp-import -n -p -f _build/html
+```
+
+
