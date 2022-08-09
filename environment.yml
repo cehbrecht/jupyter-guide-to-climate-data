@@ -25,5 +25,8 @@ dependencies:
 # xarray 
 - netcdf4
 - xarray  
+- dask
+# plot
+- matplotlib
 - pip:
   - rooki
