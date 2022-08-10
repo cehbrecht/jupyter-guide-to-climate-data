@@ -3,7 +3,7 @@ root: intro
 chapters:
 - file: cdo
 - file: xarray
-- file: xesmf
+- file: Regrid_xESMF
 - file: esgf-subset-cmip6
 - file: CDS
 - file: rooki-subset-cmip6
