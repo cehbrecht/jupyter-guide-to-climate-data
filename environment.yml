@@ -28,5 +28,9 @@ dependencies:
 - dask
 # plot
 - matplotlib
+# provenance
+- prov>=2.0.0
+- pydot
+- graphviz
 - pip:
   - rooki
