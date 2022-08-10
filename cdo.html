@@ -130,8 +130,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="xesmf.html">
-   Regridding with XESMF
+  <a class="reference internal" href="Regrid_xESMF.html">
+   Regridding with xESMF
   </a>
  </li>
  <li class="toctree-l1">
@@ -344,9 +344,70 @@ title="Print to PDF"
 <h1>CDO<a class="headerlink" href="#cdo" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cdo</span> <span class="kn">import</span> <span class="n">Cdo</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using cdo within a conda environment / custom kernel requires to manually update the PATH variable,</span>
+<span class="c1">#  if using the default kernel (Python3) this is not necessary</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">ncdumpexe</span> <span class="o">=</span> <span class="o">!</span> which ncdump
+<span class="n">cdopath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">ncdumpexe</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1">#cdopath = &quot;/work/bm0021/conda-envs-public/guidetoclimatedata/bin/&quot;</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">cdopath</span><span class="p">):</span>
+  <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PATH&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">os</span><span class="o">.</span><span class="n">pathsep</span> <span class="o">+</span> <span class="n">cdopath</span>
 
+<span class="c1"># Check if it worked</span>
+<span class="o">!</span> which cdo
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/Caskroom/mambaforge/base/envs/climate-guide/bin/cdo
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import and initialize</span>
+<span class="kn">from</span> <span class="nn">cdo</span> <span class="kn">import</span> <span class="n">Cdo</span>
 <span class="n">cdo</span> <span class="o">=</span> <span class="n">Cdo</span><span class="p">()</span>
+
+<span class="c1"># Enable debugging</span>
+<span class="c1">#cdo.debug = True</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Specify infile</span>
+<span class="n">infile_path</span> <span class="o">=</span> <span class="s2">&quot;/work/ik1017/CMIP6/data/CMIP6/CMIP/MPI-M/MPI-ESM1-2-HR/historical/r1i1p1f1/Omon/tos/gn/v20190710/&quot;</span>\
+              <span class="s2">&quot;tos_Omon_MPI-ESM1-2-HR_historical_r1i1p1f1_gn_185001-185412.nc&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Per default, all cdo calls are in silent mode (command line option <code class="docutils literal notranslate"><span class="pre">-s/--silent</span></code>)
+to counter this, specify <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> as an option (<code class="docutils literal notranslate"><span class="pre">verbose=True</span></code> does not work, bug?)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cdo</span><span class="o">.</span><span class="n">sinfoc</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">path_tos</span><span class="p">),</span> <span class="n">options</span><span class="o">=</span><span class="s1">&#39;--verbose&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [4],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">cdo</span><span class="o">.</span><span class="n">sinfoc</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">path_tos</span><span class="p">),</span> <span class="n">options</span><span class="o">=</span><span class="s1">&#39;--verbose&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;path_tos&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>The same command in the command line</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> cdo -v sinfo <span class="o">{</span>infile_path<span class="o">}</span>
 </pre></div>
 </div>
 </div>
