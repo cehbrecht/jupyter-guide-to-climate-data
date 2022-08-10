@@ -130,3 +130,6 @@ dmypy.json
 
 # Jupyter book
 _build/
+
+# output
+*.nc
