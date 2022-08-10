@@ -130,3 +130,7 @@ dmypy.json
 
 # Jupyter book
 _build/
+
+# output
+*.nc
+roocs_demo_prov.png
