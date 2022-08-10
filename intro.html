@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="CDO" href="cdo.html" />
+    <link rel="next" title="Overview" href="overview.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -113,6 +113,11 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="overview.html">
+   Overview
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="cdo.html">
    CDO
@@ -263,12 +268,41 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-from-source">
+   Build from Source
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#publish-book-to-gh-pages">
+   Publish book to gh-pages
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -280,6 +314,24 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-from-source">
+   Build from Source
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#publish-book-to-gh-pages">
+   Publish book to gh-pages
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -289,17 +341,42 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="jupyter-guide-to-climate-data">
 <h1>Jupyter Guide to Climate Data<a class="headerlink" href="#jupyter-guide-to-climate-data" title="Permalink to this headline">#</a></h1>
-<p>Topics:</p>
-<ul class="simple">
-<li><p>CDO: <a class="reference external" href="https://code.mpimet.mpg.de/projects/cdo">https://code.mpimet.mpg.de/projects/cdo</a></p></li>
-<li><p>Xarray: <a class="reference external" href="https://docs.xarray.dev/en/stable/">https://docs.xarray.dev/en/stable/</a></p></li>
-<li><p>Regridding with xesmf: <a class="reference external" href="https://xesmf.readthedocs.io/en/latest/">https://xesmf.readthedocs.io/en/latest/</a></p></li>
-<li><p>ESGF: <a class="reference external" href="https://github.com/ESGF/esgf-pyclient">https://github.com/ESGF/esgf-pyclient</a></p></li>
-<li><p>Copernicus Climate Data Store: <a class="reference external" href="https://cds.climate.copernicus.eu/">https://cds.climate.copernicus.eu/</a></p></li>
-<li><p>Rooki: <a class="reference external" href="https://github.com/roocs/rooki">https://github.com/roocs/rooki</a></p></li>
-<li><p>Provenance: <a class="reference external" href="https://prov.readthedocs.io/en/latest/">https://prov.readthedocs.io/en/latest/</a></p></li>
-<li><p>CLINT: <a class="reference external" href="https://climateintelligence.eu/">https://climateintelligence.eu/</a></p></li>
-</ul>
+<p>Jupyter Books with notebook examples for using climate data</p>
+<p>Documentation written with Jupyter Book:
+<a class="reference external" href="https://jupyterbook.org/en/stable/intro.html">https://jupyterbook.org/en/stable/intro.html</a></p>
+<p>Other book examples:
+<a class="reference external" href="https://github.com/bvanderlei/jupyter-guide-to-linear-algebra">https://github.com/bvanderlei/jupyter-guide-to-linear-algebra</a></p>
+<p>Chat:
+<a class="reference external" href="https://gitter.im/ENES-CDI/enes-summer-school">https://gitter.im/ENES-CDI/enes-summer-school</a></p>
+<section id="build-from-source">
+<h2>Build from Source<a class="headerlink" href="#build-from-source" title="Permalink to this headline">#</a></h2>
+<p>Get Source:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">cehbrecht</span><span class="o">/</span><span class="n">jupyter</span><span class="o">-</span><span class="n">guide</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">climate</span><span class="o">-</span><span class="n">data</span><span class="o">.</span><span class="n">git</span>
+
+<span class="n">cd</span> <span class="n">jupyter</span><span class="o">-</span><span class="n">guide</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">climate</span><span class="o">-</span><span class="n">data</span>
+</pre></div>
+</div>
+<p>Make conda env:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mamba</span> <span class="n">env</span> <span class="n">create</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">climate</span><span class="o">-</span><span class="n">guide</span>
+</pre></div>
+</div>
+<p>Build book:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">build</span> <span class="o">--</span><span class="nb">all</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>Show build pages:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">firefox</span> <span class="n">_build</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
+</section>
+<section id="publish-book-to-gh-pages">
+<h2>Publish book to gh-pages<a class="headerlink" href="#publish-book-to-gh-pages" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://jupyterbook.org/en/stable/publish/gh-pages.html">https://jupyterbook.org/en/stable/publish/gh-pages.html</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ghp</span><span class="o">-</span><span class="kn">import</span> <span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">p</span> <span class="o">-</span><span class="n">f</span> <span class="n">_build</span><span class="o">/</span><span class="n">html</span>
+</pre></div>
+</div>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -331,10 +408,10 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="cdo.html" title="next page">
+    <a class='right-next' id="next-link" href="overview.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">CDO</p>
+        <p class="prev-next-title">Overview</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -1,4 +1,4 @@
-# jupyter-guide-to-climate-data
+# Jupyter Guide to Climate Data
 Jupyter Books with notebook examples for using climate data
 
 
@@ -17,6 +17,8 @@ https://gitter.im/ENES-CDI/enes-summer-school
 Get Source:
 ```
 git clone https://github.com/cehbrecht/jupyter-guide-to-climate-data.git
+
+cd jupyter-guide-to-climate-data
 ```
 
 Make conda env:
@@ -27,7 +29,7 @@ conda activate climate-guide
 
 Build book:
 ```
-jupyter-book build .
+jupyter-book build --all .
 ```
 
 Show build pages:
