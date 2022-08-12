@@ -357,7 +357,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/Caskroom/mambaforge/base/envs/climate-guide/bin/cdo
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/work/bm0021/conda-envs-public/summerschool_2022/bin/cdo
 </pre></div>
 </div>
 </div>
@@ -390,22 +390,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-08-12 09:50:11--  https://esgf3.dkrz.de/thredds/fileServer/cmip6/CMIP/MPI-M/MPI-ESM1-2-HR/historical/r1i1p1f1/Omon/tos/gn/v20190710/tos_Omon_MPI-ESM1-2-HR_historical_r1i1p1f1_gn_185001-185412.nc
-Resolving esgf3.dkrz.de (esgf3.dkrz.de)... 136.172.30.113, 2001:638:70e:1e::71
-Connecting to esgf3.dkrz.de (esgf3.dkrz.de)|136.172.30.113|:443... 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>connected.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HTTP request sent, awaiting response... 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>^C
-</pre></div>
-</div>
-</div>
 </div>
 <p>Per default, all cdo calls are in silent mode (command line option <code class="docutils literal notranslate"><span class="pre">-s/--silent</span></code>)
 to counter this, specify <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> as an option. In a future release likely a possiblilty will be added to turn off silent mode.</p>
@@ -415,11 +399,93 @@ to counter this, specify <code class="docutils literal notranslate"><span class=
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;File format : NetCDF4 classic zip&#39;,
+ &#39;-1 : Institut Source   T Steptype Levels Num    Points Num Dtype : Table Code : Extra&#39;,
+ &#39;1 : unknown  MPI-ESM1.2-HR v instant       1   1    324008   1  F32z :    0   -1    : chunks=802x404x1&#39;,
+ &#39;Grid coordinates :&#39;,
+ &#39;1 : curvilinear              : points=324008 (802x404)&#39;,
+ &#39;longitude : 0.00591556 to 359.9989 degrees_east&#39;,
+ &#39;latitude : -78.71779 to 89.76312 degrees_north&#39;,
+ &#39;available : cellbounds&#39;,
+ &#39;gridID : 29&#39;,
+ &#39;mapping : undefined&#39;,
+ &#39;i : 0 to 801 by 1 1&#39;,
+ &#39;j : 0 to 403 by 1 1&#39;,
+ &#39;gridID : 28&#39;,
+ &#39;Vertical coordinates :&#39;,
+ &#39;1 : surface                  : levels=1&#39;,
+ &#39;zaxisID : 30&#39;,
+ &#39;Time coordinate :&#39;,
+ &#39;time : 60 steps&#39;,
+ &#39;RefTime =  1850-01-01 00:00:00  Units = days  Calendar = proleptic_gregorian  Bounds = true&#39;,
+ &#39;YYYY-MM-DD hh:mm:ss  YYYY-MM-DD hh:mm:ss  YYYY-MM-DD hh:mm:ss  YYYY-MM-DD hh:mm:ss&#39;,
+ &#39;1850-01-16 12:00:00  1850-02-15 00:00:00  1850-03-16 12:00:00  1850-04-16 00:00:00&#39;,
+ &#39;1850-05-16 12:00:00  1850-06-16 00:00:00  1850-07-16 12:00:00  1850-08-16 12:00:00&#39;,
+ &#39;1850-09-16 00:00:00  1850-10-16 12:00:00  1850-11-16 00:00:00  1850-12-16 12:00:00&#39;,
+ &#39;1851-01-16 12:00:00  1851-02-15 00:00:00  1851-03-16 12:00:00  1851-04-16 00:00:00&#39;,
+ &#39;1851-05-16 12:00:00  1851-06-16 00:00:00  1851-07-16 12:00:00  1851-08-16 12:00:00&#39;,
+ &#39;1851-09-16 00:00:00  1851-10-16 12:00:00  1851-11-16 00:00:00  1851-12-16 12:00:00&#39;,
+ &#39;1852-01-16 12:00:00  1852-02-15 12:00:00  1852-03-16 12:00:00  1852-04-16 00:00:00&#39;,
+ &#39;1852-05-16 12:00:00  1852-06-16 00:00:00  1852-07-16 12:00:00  1852-08-16 12:00:00&#39;,
+ &#39;1852-09-16 00:00:00  1852-10-16 12:00:00  1852-11-16 00:00:00  1852-12-16 12:00:00&#39;,
+ &#39;1853-01-16 12:00:00  1853-02-15 00:00:00  1853-03-16 12:00:00  1853-04-16 00:00:00&#39;,
+ &#39;1853-05-16 12:00:00  1853-06-16 00:00:00  1853-07-16 12:00:00  1853-08-16 12:00:00&#39;,
+ &#39;1853-09-16 00:00:00  1853-10-16 12:00:00  1853-11-16 00:00:00  1853-12-16 12:00:00&#39;,
+ &#39;1854-01-16 12:00:00  1854-02-15 00:00:00  1854-03-16 12:00:00  1854-04-16 00:00:00&#39;,
+ &#39;1854-05-16 12:00:00  1854-06-16 00:00:00  1854-07-16 12:00:00  1854-08-16 12:00:00&#39;,
+ &#39;1854-09-16 00:00:00  1854-10-16 12:00:00  1854-11-16 00:00:00  1854-12-16 12:00:00&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 <p>The same command in the command line</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> cdo -v sinfo <span class="o">{</span>infile_path<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> OpenMP:  num_procs=256  max_threads=1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">   File format</span> : NetCDF4 classic zip
+<span class=" -Color -Color-Bold">    -1 : Institut Source   T Steptype Levels Num    Points Num Dtype : Parameter ID : Extra</span>
+     1 : <span class=" -Color -Color-Blue">unknown  MPI-ESM1.2-HR v instant  </span><span class=" -Color -Color-Green">     1 </span>  1 <span class=" -Color -Color-Green">   324008 </span>  1 <span class=" -Color -Color-Blue"> F32z </span>: -1             : chunks=802x404x1 
+<span class=" -Color -Color-Bold">   Grid coordinates</span> :
+     1 : <span class=" -Color -Color-Blue">curvilinear             </span> : <span class=" -Color -Color-Green">points=324008 (802x404)</span>
+                        longitude : 0.00591556 to 359.9989 degrees_east
+                         latitude : -78.71779 to 89.76312 degrees_north
+                        available : cellbounds
+                           gridID : 29
+<span class=" -Color -Color-Blue">                          mapping</span> : <span class=" -Color -Color-Green">undefined</span>
+                                i : 0 to 801 by 1 1
+                                j : 0 to 403 by 1 1
+                           gridID : 28
+<span class=" -Color -Color-Bold">   Vertical coordinates</span> :
+     1 : <span class=" -Color -Color-Blue">surface                 </span> :<span class=" -Color -Color-Green"> levels=1</span>
+                          zaxisID : 30
+<span class=" -Color -Color-Bold">   Time coordinate</span> :
+                             time : <span class=" -Color -Color-Green">60 steps</span>
+     RefTime =  1850-01-01 00:00:00  Units = days  Calendar = proleptic_gregorian  Bounds = true
+  YYYY-MM-DD hh:mm:ss  YYYY-MM-DD hh:mm:ss  YYYY-MM-DD hh:mm:ss  YYYY-MM-DD hh:mm:ss
+<span class=" -Color -Color-Magenta">  1850-01-16 12:00:00  1850-02-15 00:00:00  1850-03-16 12:00:00  1850-04-16 00:00:00</span>
+<span class=" -Color -Color-Magenta">  1850-05-16 12:00:00  1850-06-16 00:00:00  1850-07-16 12:00:00  1850-08-16 12:00:00</span>
+<span class=" -Color -Color-Magenta">  1850-09-16 00:00:00  1850-10-16 12:00:00  1850-11-16 00:00:00  1850-12-16 12:00:00</span>
+<span class=" -Color -Color-Magenta">  1851-01-16 12:00:00  1851-02-15 00:00:00  1851-03-16 12:00:00  1851-04-16 00:00:00</span>
+<span class=" -Color -Color-Magenta">  1851-05-16 12:00:00  1851-06-16 00:00:00  1851-07-16 12:00:00  1851-08-16 12:00:00</span>
+<span class=" -Color -Color-Magenta">  1851-09-16 00:00:00  1851-10-16 12:00:00  1851-11-16 00:00:00  1851-12-16 12:00:00</span>
+<span class=" -Color -Color-Magenta">  1852-01-16 12:00:00  1852-02-15 12:00:00  1852-03-16 12:00:00  1852-04-16 00:00:00</span>
+<span class=" -Color -Color-Magenta">  1852-05-16 12:00:00  1852-06-16 00:00:00  1852-07-16 12:00:00  1852-08-16 12:00:00</span>
+<span class=" -Color -Color-Magenta">  1852-09-16 00:00:00  1852-10-16 12:00:00  1852-11-16 00:00:00  1852-12-16 12:00:00</span>
+<span class=" -Color -Color-Magenta">  1853-01-16 12:00:00  1853-02-15 00:00:00  1853-03-16 12:00:00  1853-04-16 00:00:00</span>
+<span class=" -Color -Color-Magenta">  1853-05-16 12:00:00  1853-06-16 00:00:00  1853-07-16 12:00:00  1853-08-16 12:00:00</span>
+<span class=" -Color -Color-Magenta">  1853-09-16 00:00:00  1853-10-16 12:00:00  1853-11-16 00:00:00  1853-12-16 12:00:00</span>
+<span class=" -Color -Color-Magenta">  1854-01-16 12:00:00  1854-02-15 00:00:00  1854-03-16 12:00:00  1854-04-16 00:00:00</span>
+<span class=" -Color -Color-Magenta">  1854-05-16 12:00:00  1854-06-16 00:00:00  1854-07-16 12:00:00  1854-08-16 12:00:00</span>
+<span class=" -Color -Color-Magenta">  1854-09-16 00:00:00  1854-10-16 12:00:00  1854-11-16 00:00:00  1854-12-16 12:00:00</span>
+<span class=" -Color -Color-Green">cdo    sinfo: </span>Processed 1 variable over 60 timesteps [0.10s 121MB].
 </pre></div>
 </div>
 </div>

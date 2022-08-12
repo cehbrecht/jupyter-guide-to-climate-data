@@ -32,6 +32,11 @@ Build book:
 jupyter-book build --all .
 ```
 
+... or use make:
+```
+make clean build
+```
+
 Show build pages:
 ```
 firefox _build/html/index.html
@@ -43,6 +48,11 @@ https://jupyterbook.org/en/stable/publish/gh-pages.html
 
 ```
 ghp-import -n -p -f _build/html
+```
+
+... or use make:
+```
+make publish
 ```
 
 
