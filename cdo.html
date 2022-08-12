@@ -379,14 +379,7 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Specify infile</span>
 <span class="n">infile</span> <span class="o">=</span> <span class="s2">&quot;tos_Omon_MPI-ESM1-2-HR_historical_r1i1p1f1_gn_185001-185412.nc&quot;</span>
 <span class="n">infile_path</span> <span class="o">=</span> <span class="s2">&quot;/work/ik1017/CMIP6/data/CMIP6/CMIP/MPI-M/MPI-ESM1-2-HR/historical/r1i1p1f1/Omon/tos/gn/v20190710/&quot;</span>
-
-<span class="c1"># If infile not present, download locally</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">infile_path</span><span class="o">+</span><span class="n">infile</span><span class="p">):</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">infile</span><span class="p">):</span>
-        <span class="o">!</span> wget https://esgf3.dkrz.de/thredds/fileServer/cmip6/CMIP/MPI-M/MPI-ESM1-2-HR/historical/r1i1p1f1/Omon/tos/gn/v20190710/tos_Omon_MPI-ESM1-2-HR_historical_r1i1p1f1_gn_185001-185412.nc
-    <span class="n">infile_path</span> <span class="o">=</span> <span class="s2">&quot;tos_Omon_MPI-ESM1-2-HR_historical_r1i1p1f1_gn_185001-185412.nc&quot;</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">infile_path</span> <span class="o">+=</span> <span class="n">infile</span>
+<span class="n">infile_path</span> <span class="o">+=</span> <span class="n">infile</span>    
 </pre></div>
 </div>
 </div>
@@ -485,7 +478,7 @@ to counter this, specify <code class="docutils literal notranslate"><span class=
 <span class=" -Color -Color-Magenta">  1854-01-16 12:00:00  1854-02-15 00:00:00  1854-03-16 12:00:00  1854-04-16 00:00:00</span>
 <span class=" -Color -Color-Magenta">  1854-05-16 12:00:00  1854-06-16 00:00:00  1854-07-16 12:00:00  1854-08-16 12:00:00</span>
 <span class=" -Color -Color-Magenta">  1854-09-16 00:00:00  1854-10-16 12:00:00  1854-11-16 00:00:00  1854-12-16 12:00:00</span>
-<span class=" -Color -Color-Green">cdo    sinfo: </span>Processed 1 variable over 60 timesteps [0.10s 121MB].
+<span class=" -Color -Color-Green">cdo    sinfo: </span>Processed 1 variable over 60 timesteps [0.13s 117MB].
 </pre></div>
 </div>
 </div>
@@ -501,16 +494,16 @@ to counter this, specify <code class="docutils literal notranslate"><span class=
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "summerschool_2022"
         },
         kernelOptions: {
-            kernelName: "python3",
+            kernelName: "summerschool_2022",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'summerschool_2022'</script>
 
               </div>
               
