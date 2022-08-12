@@ -479,9 +479,15 @@ title="Print to PDF"
 <h1>Regridding with <a class="reference external" href="https://github.com/pangeo-data/xESMF">xESMF</a><a class="headerlink" href="#regridding-with-xesmf" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PROJ_LIB&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;/work/bm0021/conda-envs-public/clisops/share/proj&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Some necessary steps when using a custom conda environment with pyproj and CDO installed</span>
+<span class="kn">import</span> <span class="nn">conda</span><span class="o">,</span> <span class="nn">os</span>
+<span class="n">conda_file_dir</span> <span class="o">=</span> <span class="n">conda</span><span class="o">.</span><span class="vm">__file__</span>
+<span class="n">conda_dir</span> <span class="o">=</span> <span class="n">conda_file_dir</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;lib&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">proj_lib</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">conda_dir</span><span class="p">,</span> <span class="s1">&#39;share&#39;</span><span class="p">),</span> <span class="s1">&#39;proj&#39;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PROJ_LIB&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">proj_lib</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">os</span><span class="o">.</span><span class="n">pathsep</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">conda_dir</span><span class="p">,</span> <span class="s1">&#39;bin&#39;</span><span class="p">)</span>
 
+<span class="c1"># Import necessary python modules</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
@@ -507,21 +513,53 @@ since xarray cannot subset variables with 2D coordinate variables by their value
 longitude axis when subsetting across the 0-meridian (or in general: across the easter and western bounds of the grid).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cmip_root</span> <span class="o">=</span> <span class="s2">&quot;/work/ik1017/CMIP6/data&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###########################################################################</span>
+<span class="c1"># Specify input files, download if not working on levante, load via xarray:</span>
+<span class="c1">###########################################################################</span>
+
+<span class="n">cmip_root</span> <span class="o">=</span> <span class="s2">&quot;/work/ik1017/CMIP6/data&quot;</span>
 
 <span class="c1"># near surface air temperature</span>
 <span class="n">path_tas</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">cmip_root</span><span class="p">,</span>  <span class="s2">&quot;CMIP6/CMIP/MPI-M/MPI-ESM1-2-HR/historical/r1i1p1f1/Amon/tas/gn/v20190710/&quot;</span><span class="p">)</span>
-<span class="n">path_tas</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path_tas</span><span class="p">,</span> <span class="s2">&quot;tas_Amon_MPI-ESM1-2-HR_historical_r1i1p1f1_gn_185001-185412.nc&quot;</span><span class="p">)</span>
+<span class="n">infile_tas</span> <span class="o">=</span> <span class="s2">&quot;tas_Amon_MPI-ESM1-2-HR_historical_r1i1p1f1_gn_185001-185412.nc&quot;</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">path_tas</span><span class="p">,</span> <span class="n">infile_tas</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">infile_tas</span><span class="p">):</span>
+        <span class="o">!</span> wget https://esgf3.dkrz.de/thredds/fileServer/cmip6/CMIP/MPI-M/MPI-ESM1-2-HR/historical/r1i1p1f1/Amon/tas/gn/v20190710/tas_Amon_MPI-ESM1-2-HR_historical_r1i1p1f1_gn_185001-185412.nc
+    <span class="n">path_tas</span> <span class="o">=</span> <span class="n">infile_tas</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">path_tas</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path_tas</span><span class="p">,</span> <span class="n">infile_tas</span><span class="p">)</span>
 <span class="n">ds_tas_global</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">path_tas</span><span class="p">)</span>
 
 <span class="c1"># ocean surface temperature</span>
 <span class="n">path_tos</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">cmip_root</span><span class="p">,</span>  <span class="s2">&quot;CMIP6/CMIP/MPI-M/MPI-ESM1-2-HR/historical/r1i1p1f1/Omon/tos/gn/v20190710/&quot;</span><span class="p">)</span>
-<span class="n">path_tos</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path_tos</span><span class="p">,</span> <span class="s2">&quot;tos_Omon_MPI-ESM1-2-HR_historical_r1i1p1f1_gn_185001-185412.nc&quot;</span><span class="p">)</span>
+<span class="n">infile_tos</span> <span class="o">=</span> <span class="s2">&quot;tos_Omon_MPI-ESM1-2-HR_historical_r1i1p1f1_gn_185001-185412.nc&quot;</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">path_tos</span><span class="p">,</span> <span class="n">infile_tos</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">infile_tos</span><span class="p">):</span>
+        <span class="o">!</span> wget https://esgf3.dkrz.de/thredds/fileServer/cmip6/CMIP/MPI-M/MPI-ESM1-2-HR/historical/r1i1p1f1/Omon/tos/gn/v20190710/tos_Omon_MPI-ESM1-2-HR_historical_r1i1p1f1_gn_185001-185412.nc
+    <span class="n">path_tos</span> <span class="o">=</span> <span class="n">infile_tos</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">path_tos</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path_tos</span><span class="p">,</span> <span class="n">infile_tos</span><span class="p">)</span>
 <span class="n">ds_tos_global</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">path_tos</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-08-12 09:49:35--  https://esgf3.dkrz.de/thredds/fileServer/cmip6/CMIP/MPI-M/MPI-ESM1-2-HR/historical/r1i1p1f1/Amon/tas/gn/v20190710/tas_Amon_MPI-ESM1-2-HR_historical_r1i1p1f1_gn_185001-185412.nc
+Resolving esgf3.dkrz.de (esgf3.dkrz.de)... 136.172.30.113, 2001:638:70e:1e::71
+Connecting to esgf3.dkrz.de (esgf3.dkrz.de)|136.172.30.113|:443... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>connected.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HTTP request sent, awaiting response... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>^C
+</pre></div>
+</div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
 <span class="nn">File /usr/local/Caskroom/mambaforge/base/envs/climate-guide/lib/python3.10/site-packages/xarray/backends/file_manager.py:199,</span> in <span class="ni">CachingFileManager._acquire_with_cache_info</span><span class="nt">(self, needs_lock)</span>
@@ -534,17 +572,17 @@ longitude axis when subsetting across the 0-meridian (or in general: across the 
 <span class="ne">---&gt; </span><span class="mi">53</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
 <span class="g g-Whitespace">     </span><span class="mi">54</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="o">.</span><span class="n">move_to_end</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 
-<span class="ne">KeyError</span>: [&lt;class &#39;netCDF4._netCDF4.Dataset&#39;&gt;, (&#39;/work/ik1017/CMIP6/data/CMIP6/CMIP/MPI-M/MPI-ESM1-2-HR/historical/r1i1p1f1/Amon/tas/gn/v20190710/tas_Amon_MPI-ESM1-2-HR_historical_r1i1p1f1_gn_185001-185412.nc&#39;,), &#39;r&#39;, ((&#39;clobber&#39;, True), (&#39;diskless&#39;, False), (&#39;format&#39;, &#39;NETCDF4&#39;), (&#39;persist&#39;, False))]
+<span class="ne">KeyError</span>: [&lt;class &#39;netCDF4._netCDF4.Dataset&#39;&gt;, (&#39;/Users/pingu/Documents/GitHub/macpingu/jupyter-guide-to-climate-data/tas_Amon_MPI-ESM1-2-HR_historical_r1i1p1f1_gn_185001-185412.nc&#39;,), &#39;r&#39;, ((&#39;clobber&#39;, True), (&#39;diskless&#39;, False), (&#39;format&#39;, &#39;NETCDF4&#39;), (&#39;persist&#39;, False))]
 
 <span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
 
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="nn">Input In [2],</span> in <span class="ni">&lt;cell line: 6&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">path_tas</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">cmip_root</span><span class="p">,</span>  <span class="s2">&quot;CMIP6/CMIP/MPI-M/MPI-ESM1-2-HR/historical/r1i1p1f1/Amon/tas/gn/v20190710/&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">path_tas</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path_tas</span><span class="p">,</span> <span class="s2">&quot;tas_Amon_MPI-ESM1-2-HR_historical_r1i1p1f1_gn_185001-185412.nc&quot;</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">ds_tas_global</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">path_tas</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># ocean surface temperature</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">path_tos</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">cmip_root</span><span class="p">,</span>  <span class="s2">&quot;CMIP6/CMIP/MPI-M/MPI-ESM1-2-HR/historical/r1i1p1f1/Omon/tos/gn/v20190710/&quot;</span><span class="p">)</span>
+<span class="nn">Input In [2],</span> in <span class="ni">&lt;cell line: 17&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>     <span class="n">path_tas</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path_tas</span><span class="p">,</span> <span class="n">infile_tas</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">17</span> <span class="n">ds_tas_global</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">path_tas</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="c1"># ocean surface temperature</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="n">path_tos</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">cmip_root</span><span class="p">,</span>  <span class="s2">&quot;CMIP6/CMIP/MPI-M/MPI-ESM1-2-HR/historical/r1i1p1f1/Omon/tos/gn/v20190710/&quot;</span><span class="p">)</span>
 
 <span class="nn">File /usr/local/Caskroom/mambaforge/base/envs/climate-guide/lib/python3.10/site-packages/xarray/backends/api.py:495,</span> in <span class="ni">open_dataset</span><span class="nt">(filename_or_obj, engine, chunks, cache, decode_cf, mask_and_scale, decode_times, decode_timedelta, use_cftime, concat_characters, decode_coords, drop_variables, backend_kwargs, *args, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">483</span> <span class="n">decoders</span> <span class="o">=</span> <span class="n">_resolve_decoders_kwargs</span><span class="p">(</span>
@@ -644,7 +682,7 @@ longitude axis when subsetting across the 0-meridian (or in general: across the 
 
 <span class="nn">File src/netCDF4/_netCDF4.pyx:1963,</span> in <span class="ni">netCDF4._netCDF4._ensure_nc_success</span><span class="nt">()</span>
 
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: b&#39;/work/ik1017/CMIP6/data/CMIP6/CMIP/MPI-M/MPI-ESM1-2-HR/historical/r1i1p1f1/Amon/tas/gn/v20190710/tas_Amon_MPI-ESM1-2-HR_historical_r1i1p1f1_gn_185001-185412.nc&#39;
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: b&#39;/Users/pingu/Documents/GitHub/macpingu/jupyter-guide-to-climate-data/tas_Amon_MPI-ESM1-2-HR_historical_r1i1p1f1_gn_185001-185412.nc&#39;
 </pre></div>
 </div>
 </div>
@@ -687,10 +725,10 @@ to avoid problems like missing values at the domain bounds.</p>
 <span class="c1">#  xe.util.cf_grid_2d(lon0_b, lon1_b, d_lon, lat0_b, lat1_b, d_lat)</span>
 <span class="n">ds_out</span> <span class="o">=</span> <span class="n">xe</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">cf_grid_2d</span><span class="p">(</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-<span class="c1"># alternatively create a global grid:</span>
+<span class="c1"># alternatively create a global target grid:</span>
 <span class="c1">#ds_out = xe.util.grid_global(d_lat=1, d_lon=1, cf=True)</span>
 
-<span class="c1"># altneratively use clisops:</span>
+<span class="c1"># altneratively use clisops to create the target grid:</span>
 <span class="c1">#from clisops.core.regrid import Grid</span>
 <span class="c1">#ds_out = Grid(grid_instructor=(-25,60,1,35,70,1)).ds</span>
 <span class="c1">#ds_out = Grid(grid_instructor=1)</span>
@@ -752,8 +790,9 @@ xarray <code class="docutils literal notranslate"><span class="pre">DataSet</spa
 
 <span class="n">regridder</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">method</span> <span class="ow">in</span> <span class="n">method_list</span><span class="p">:</span>
-    <span class="n">regridder</span><span class="p">[</span><span class="n">method</span><span class="o">+</span><span class="s2">&quot;_tas&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xe</span><span class="o">.</span><span class="n">Regridder</span><span class="p">(</span><span class="n">ds_tas</span><span class="p">,</span> <span class="n">ds_out</span><span class="p">,</span> <span class="n">method</span><span class="p">)</span>
-    <span class="n">regridder</span><span class="p">[</span><span class="n">method</span><span class="o">+</span><span class="s2">&quot;_tos&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xe</span><span class="o">.</span><span class="n">Regridder</span><span class="p">(</span><span class="n">ds_tos</span><span class="p">,</span> <span class="n">ds_out</span><span class="p">,</span> <span class="n">method</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="n">method</span><span class="p">)</span>
+    <span class="o">%</span><span class="k">time</span> regridder[method+&quot;_tas&quot;] = xe.Regridder(ds_tas, ds_out, method)
+    <span class="o">%</span><span class="k">time</span> regridder[method+&quot;_tos&quot;] = xe.Regridder(ds_tos, ds_out, method)
 </pre></div>
 </div>
 </div>
@@ -932,7 +971,7 @@ One can use xarray to remove the halo or the input mask option of xESMF to mask 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use cdo verifygrid to confirm duplicated and/or collapsing cells</span>
-<span class="o">!</span> /work/bm0021/conda-envs-public/guidetoclimatedata/bin/cdo verifygrid <span class="o">{</span>path_tos<span class="o">}</span>
+<span class="o">!</span> cdo verifygrid <span class="o">{</span>path_tos<span class="o">}</span>
 </pre></div>
 </div>
 </div>
@@ -952,7 +991,7 @@ One can use xarray to remove the halo or the input mask option of xESMF to mask 
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use cdo selindexbox,lon_idx1,lon_idx2,lat_idx1,lat_idx2 (indexing starts at 1!)</span>
 <span class="c1">#  to remove halo and verifygrid to confirm duplicated and/or collapsing cells have been removed</span>
-<span class="o">!</span> /work/bm0021/conda-envs-public/guidetoclimatedata/bin/cdo verifygrid -selindexbox,2,801,3,404 <span class="o">{</span>path_tos<span class="o">}</span>
+<span class="o">!</span> cdo verifygrid -selindexbox,2,801,3,404 <span class="o">{</span>path_tos<span class="o">}</span>
 </pre></div>
 </div>
 </div>
@@ -972,7 +1011,8 @@ One can use xarray to remove the halo or the input mask option of xESMF to mask 
 <span class="c1">#  for global datasets, we need to set the periodic parameter, or we might get missing values</span>
 <span class="c1">#  contaminating the result where the east and west edges of the grid meet, or at the poles.</span>
 <span class="k">for</span> <span class="n">method</span> <span class="ow">in</span> <span class="n">method_list</span><span class="p">:</span>
-    <span class="n">regridder</span><span class="p">[</span><span class="n">method</span><span class="o">+</span><span class="s2">&quot;_tos_global&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xe</span><span class="o">.</span><span class="n">Regridder</span><span class="p">(</span><span class="n">ds_tos_nohalo</span><span class="p">,</span> <span class="n">ds_out_global</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">periodic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="n">method</span><span class="p">)</span>
+    <span class="o">%</span><span class="k">time</span> regridder[method+&quot;_tos_global&quot;] = xe.Regridder(ds_tos_nohalo, ds_out_global, method, periodic=True)
     <span class="c1">#In case one wants to see the halo effects:</span>
     <span class="c1">#regridder[method+&quot;_tos_global&quot;] = xe.Regridder(ds_tos_global, ds_out_global, method, periodic=True, ignore_degenerate=True)</span>
 </pre></div>
@@ -1014,6 +1054,7 @@ One can use xarray to remove the halo or the input mask option of xESMF to mask 
 <li><p>this selection of jupyter notebooks:</p>
 <ul>
 <li><p><a class="reference external" href="https://nbviewer.jupyter.org/github/Ouranosinc/pavics-sdi/blob/master/docs/source/notebooks/regridding.ipynb">Remapping climate data with xESMF</a> provided by <a class="reference external" href="https://www.ouranos.ca/en/">Ouranos</a></p></li>
+<li><p><a class="reference external" href="https://earth-env-data-science.github.io/lectures/working_with_gcm_data.html">Working with GCM data</a></p></li>
 <li><p><a class="reference external" href="https://nbviewer.org/github/roocs/regrid-prototype/blob/main/docs/notebooks/xESMF_curvilinear_nearest_mask_unmapped.ipynb">Remapping regional datasets</a></p></li>
 <li><p><a class="reference external" href="https://nbviewer.org/github/roocs/regrid-prototype/blob/main/docs/notebooks/xESMF_unstructured_locstream_ref.ipynb">Remapping from unstructured grids</a></p></li>
 <li><p><a class="reference external" href="https://nbviewer.org/github/roocs/clisops/blob/regrid-main/notebooks/regrid.ipynb">Regridding with clisops powered by xESMF</a></p></li>

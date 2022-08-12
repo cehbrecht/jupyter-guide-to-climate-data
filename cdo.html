@@ -344,14 +344,12 @@ title="Print to PDF"
 <h1>CDO<a class="headerlink" href="#cdo" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using cdo within a conda environment / custom kernel requires to manually update the PATH variable,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using CDO within a conda environment / custom kernel requires to manually update the PATH variable,</span>
 <span class="c1">#  if using the default kernel (Python3) this is not necessary</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="n">ncdumpexe</span> <span class="o">=</span> <span class="o">!</span> which ncdump
-<span class="n">cdopath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">ncdumpexe</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="c1">#cdopath = &quot;/work/bm0021/conda-envs-public/guidetoclimatedata/bin/&quot;</span>
-<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">cdopath</span><span class="p">):</span>
-  <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PATH&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">os</span><span class="o">.</span><span class="n">pathsep</span> <span class="o">+</span> <span class="n">cdopath</span>
+<span class="kn">import</span> <span class="nn">conda</span><span class="o">,</span> <span class="nn">os</span>
+<span class="n">conda_file_dir</span> <span class="o">=</span> <span class="n">conda</span><span class="o">.</span><span class="vm">__file__</span>
+<span class="n">conda_dir</span> <span class="o">=</span> <span class="n">conda_file_dir</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;lib&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">os</span><span class="o">.</span><span class="n">pathsep</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">conda_dir</span><span class="p">,</span> <span class="s1">&#39;bin&#39;</span><span class="p">)</span>
 
 <span class="c1"># Check if it worked</span>
 <span class="o">!</span> which cdo
@@ -371,7 +369,7 @@ title="Print to PDF"
 <span class="n">cdo</span> <span class="o">=</span> <span class="n">Cdo</span><span class="p">()</span>
 
 <span class="c1"># Enable debugging</span>
-<span class="c1">#cdo.debug = True</span>
+<span class="c1">#cdo.debug = True http://esgf3.dkrz.de/thredds/fileServer/cmip6/CMIP/MPI-M/MPI-ESM1-2-LR/1pctCO2/r1i1p1f1/Omon/tos/gn/v20190710/tos_Omon_MPI-ESM1-2-LR_1pctCO2_r1i1p1f1_gn_185001-186912.nc</span>
 </pre></div>
 </div>
 </div>
@@ -379,27 +377,41 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Specify infile</span>
-<span class="n">infile_path</span> <span class="o">=</span> <span class="s2">&quot;/work/ik1017/CMIP6/data/CMIP6/CMIP/MPI-M/MPI-ESM1-2-HR/historical/r1i1p1f1/Omon/tos/gn/v20190710/&quot;</span>\
-              <span class="s2">&quot;tos_Omon_MPI-ESM1-2-HR_historical_r1i1p1f1_gn_185001-185412.nc&quot;</span>
+<span class="n">infile</span> <span class="o">=</span> <span class="s2">&quot;tos_Omon_MPI-ESM1-2-HR_historical_r1i1p1f1_gn_185001-185412.nc&quot;</span>
+<span class="n">infile_path</span> <span class="o">=</span> <span class="s2">&quot;/work/ik1017/CMIP6/data/CMIP6/CMIP/MPI-M/MPI-ESM1-2-HR/historical/r1i1p1f1/Omon/tos/gn/v20190710/&quot;</span>
+
+<span class="c1"># If infile not present, download locally</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">infile_path</span><span class="o">+</span><span class="n">infile</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">infile</span><span class="p">):</span>
+        <span class="o">!</span> wget https://esgf3.dkrz.de/thredds/fileServer/cmip6/CMIP/MPI-M/MPI-ESM1-2-HR/historical/r1i1p1f1/Omon/tos/gn/v20190710/tos_Omon_MPI-ESM1-2-HR_historical_r1i1p1f1_gn_185001-185412.nc
+    <span class="n">infile_path</span> <span class="o">=</span> <span class="s2">&quot;tos_Omon_MPI-ESM1-2-HR_historical_r1i1p1f1_gn_185001-185412.nc&quot;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">infile_path</span> <span class="o">+=</span> <span class="n">infile</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-08-12 09:50:11--  https://esgf3.dkrz.de/thredds/fileServer/cmip6/CMIP/MPI-M/MPI-ESM1-2-HR/historical/r1i1p1f1/Omon/tos/gn/v20190710/tos_Omon_MPI-ESM1-2-HR_historical_r1i1p1f1_gn_185001-185412.nc
+Resolving esgf3.dkrz.de (esgf3.dkrz.de)... 136.172.30.113, 2001:638:70e:1e::71
+Connecting to esgf3.dkrz.de (esgf3.dkrz.de)|136.172.30.113|:443... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>connected.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HTTP request sent, awaiting response... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>^C
 </pre></div>
 </div>
 </div>
 </div>
 <p>Per default, all cdo calls are in silent mode (command line option <code class="docutils literal notranslate"><span class="pre">-s/--silent</span></code>)
-to counter this, specify <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> as an option (<code class="docutils literal notranslate"><span class="pre">verbose=True</span></code> does not work, bug?)</p>
+to counter this, specify <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> as an option. In a future release likely a possiblilty will be added to turn off silent mode.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cdo</span><span class="o">.</span><span class="n">sinfoc</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">path_tos</span><span class="p">),</span> <span class="n">options</span><span class="o">=</span><span class="s1">&#39;--verbose&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [4],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">cdo</span><span class="o">.</span><span class="n">sinfoc</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">path_tos</span><span class="p">),</span> <span class="n">options</span><span class="o">=</span><span class="s1">&#39;--verbose&#39;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;path_tos&#39; is not defined
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cdo</span><span class="o">.</span><span class="n">sinfoc</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">infile_path</span><span class="p">),</span> <span class="n">options</span><span class="o">=</span><span class="s1">&#39;--verbose&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
