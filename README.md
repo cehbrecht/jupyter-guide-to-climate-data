@@ -11,6 +11,11 @@ https://github.com/bvanderlei/jupyter-guide-to-linear-algebra
 Chat:
 https://gitter.im/ENES-CDI/enes-summer-school
 
+Discussions:
+https://github.com/IS-ENES-Data/summer-school-2022/discussions/
+
+Material on GitHub:
+https://github.com/IS-ENES-Data/summer-school-2022
 
 ## Build from Source
 
