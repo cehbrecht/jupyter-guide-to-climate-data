@@ -84,3 +84,5 @@ Make kernel:
 ```
 python -m ipykernel install --user --name "summerschool_2022" --display-name="summerschool_2022"
 ```
+
+Open notebooks in Jupyter and choose kernel "summerschool_2022"
