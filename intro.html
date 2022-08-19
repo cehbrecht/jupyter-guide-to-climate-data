@@ -300,6 +300,11 @@ title="Print to PDF"
    Publish book to gh-pages
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-on-levante-at-dkrz">
+   Working on Levante at DKRZ
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -327,6 +332,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#publish-book-to-gh-pages">
    Publish book to gh-pages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-on-levante-at-dkrz">
+   Working on Levante at DKRZ
   </a>
  </li>
 </ul>
@@ -384,6 +394,32 @@ title="Print to PDF"
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">publish</span>
 </pre></div>
 </div>
+</section>
+<section id="working-on-levante-at-dkrz">
+<h2>Working on Levante at DKRZ<a class="headerlink" href="#working-on-levante-at-dkrz" title="Permalink to this headline">#</a></h2>
+<p>Login to levante … or use terminal in jupyter.</p>
+<p>Get source:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">cehbrecht</span><span class="o">/</span><span class="n">jupyter</span><span class="o">-</span><span class="n">guide</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">climate</span><span class="o">-</span><span class="n">data</span><span class="o">.</span><span class="n">git</span>
+
+<span class="n">cd</span> <span class="n">jupyter</span><span class="o">-</span><span class="n">guide</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">climate</span><span class="o">-</span><span class="n">data</span>
+</pre></div>
+</div>
+<p>Init conda:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">init</span> <span class="n">bash</span>
+<span class="n">source</span> <span class="o">~/.</span><span class="n">bashrc</span>
+</pre></div>
+</div>
+<p>Create conda env:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mamba</span> <span class="n">env</span> <span class="n">create</span>
+
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">summerschool_2022</span>
+</pre></div>
+</div>
+<p>Make kernel:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">ipykernel</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="o">--</span><span class="n">name</span> <span class="s2">&quot;summerschool_2022&quot;</span> <span class="o">--</span><span class="n">display</span><span class="o">-</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;summerschool_2022&quot;</span>
+</pre></div>
+</div>
+<p>Open notebooks in Jupyter and choose kernel “summerschool_2022”</p>
 </section>
 <div class="toctree-wrapper compound">
 </div>

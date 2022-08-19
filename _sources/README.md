@@ -56,3 +56,33 @@ make publish
 ```
 
 
+## Working on Levante at DKRZ
+
+Login to levante ... or use terminal in jupyter.
+
+Get source:
+```
+git clone https://github.com/cehbrecht/jupyter-guide-to-climate-data.git
+
+cd jupyter-guide-to-climate-data
+```
+
+Init conda:
+```
+conda init bash
+source ~/.bashrc
+```
+
+Create conda env:
+```
+mamba env create
+
+conda activate summerschool_2022
+```
+
+Make kernel:
+```
+python -m ipykernel install --user --name "summerschool_2022" --display-name="summerschool_2022"
+```
+
+Open notebooks in Jupyter and choose kernel "summerschool_2022"

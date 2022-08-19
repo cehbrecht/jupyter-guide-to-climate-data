@@ -383,11 +383,6 @@ title="Print to PDF"
    Show Provenance
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plot-as-png-diagram">
-   Plot as png diagram
-  </a>
- </li>
 </ul>
 
     </nav>
@@ -450,11 +445,6 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#show-provenance">
    Show Provenance
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plot-as-png-diagram">
-   Plot as png diagram
   </a>
  </li>
 </ul>
@@ -703,29 +693,6 @@ endDocument
 </div>
 </div>
 </section>
-<section id="plot-as-png-diagram">
-<h2>Plot as png diagram<a class="headerlink" href="#plot-as-png-diagram" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">prov.dot</span> <span class="kn">import</span> <span class="n">prov_to_dot</span>
-<span class="n">figure</span> <span class="o">=</span> <span class="n">prov_to_dot</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
-<span class="n">figure</span><span class="o">.</span><span class="n">write_png</span><span class="p">(</span><span class="s2">&quot;roocs_demo_prov.png&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;roocs_demo_prov.png&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/PROV_26_0.png" src="_images/PROV_26_0.png" />
-</div>
-</div>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -737,16 +704,16 @@ endDocument
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "summerschool_2022"
         },
         kernelOptions: {
-            kernelName: "python3",
+            kernelName: "summerschool_2022",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'summerschool_2022'</script>
 
               </div>
               
