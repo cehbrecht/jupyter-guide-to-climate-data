@@ -4,8 +4,10 @@ chapters:
 - file: overview
 - file: cdo
 - file: xarray
+- file: cdo-cmor
 - file: Regrid_xESMF
 - file: esgf-subset-cmip6
+- file: cdo-subset-cmip6
 - file: CDS
 - file: CDS-demo
 - file: cdsapi

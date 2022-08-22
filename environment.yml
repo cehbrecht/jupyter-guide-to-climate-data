@@ -49,6 +49,7 @@ dependencies:
 - matplotlib>=3.5.2
 - cartopy>=0.20.2
 - hvplot
+- geoviews
 # provenance
 - prov>=2.0.0
 - pydot
