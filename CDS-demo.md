@@ -113,7 +113,7 @@ c.retrieve(
     'download.zip')
 ```
 
-Open the notebook [notebooks/cdsapi.ipynb](https://nbviewer.org/github/atmodatcode/tgif_copernicus/blob/main/notebooks/cdsapi.ipynb) and replace the data request.
+Open the notebook [cdsapi.ipynb](https://cehbrecht.github.io/jupyter-guide-to-climate-data/cdsapi.html) and replace the data request.
 
 Run the notebook.
 
@@ -123,6 +123,6 @@ Run the notebook.
 
 ROOK: **R**emote **O**perations **O**n **K**limadaten
 
-Open the notebook [notebooks/rooki.ipynb](https://nbviewer.org/github/atmodatcode/tgif_copernicus/blob/main/notebooks/rooki.ipynb).
+Open the notebook [rooki.ipynb](https://cehbrecht.github.io/jupyter-guide-to-climate-data/rooki.html).
 
 Run the notebook.
