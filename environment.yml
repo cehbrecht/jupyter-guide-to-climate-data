@@ -23,6 +23,8 @@ dependencies:
 - pymetalink
 - owslib
 - pyproj>=3.0.1
+# cds
+- cdsapi
 # xarray 
 - netcdf4>=1.4
 - xarray>=0.15,<2022.6.0

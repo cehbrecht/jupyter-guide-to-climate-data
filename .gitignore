@@ -134,3 +134,5 @@ _build/
 # output
 *.nc
 roocs_demo_prov.png
+adaptor.esgf_wps.*
+download.zip
