@@ -7,6 +7,8 @@ chapters:
 - file: Regrid_xESMF
 - file: esgf-subset-cmip6
 - file: CDS
-- file: rooki-subset-cmip6
+- file: CDS-demo
+- file: cdsapi
+- file: rooki
 - file: PROV
 - file: CLINT
