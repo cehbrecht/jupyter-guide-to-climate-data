@@ -1,12 +1,17 @@
 # Copernicus Climate Data Store
 
-* https://cds.climate.copernicus.eu/
-* https://github.com/cehbrecht/tgif_copernicus
+https://cds.climate.copernicus.eu/
 
 
 * Copernicus Climate Change Service (C3S)
 * Climate Data Store (CDS)
 * CMIP6 subsetting service
+
+## External Material
+
+* https://github.com/cehbrecht/tgif_copernicus
+* [TGIF Slides](https://docs.google.com/presentation/d/1MmbCbASpAJJq5yUgcVXKhNwZTvrRwo_N/edit?usp=sharing&ouid=102118564710801685708&rtpof=true&sd=true)
+
 
 ## EU Copernicus Programme
 
