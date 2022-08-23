@@ -9,8 +9,12 @@ https://cds.climate.copernicus.eu/cdsapp#!/software/app-tourism-fire-danger-indi
 
 ## Download CMIP6 Datasets
 
-Search Datasets for **CMIP6**:
+Use the search option, select search for Dataset and enter **CMIP6** as search term:
 https://cds.climate.copernicus.eu/cdsapp#!/search?type=dataset
+
+```{figure} /media/CDS_searchbar.png
+:scale: 50%
+```
 
 The will let you to this download formular:
 https://cds.climate.copernicus.eu/cdsapp#!/dataset/projections-cmip6?tab=form
