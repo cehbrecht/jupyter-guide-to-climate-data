@@ -7,7 +7,7 @@ https://cds.climate.copernicus.eu/
 
 https://cds.climate.copernicus.eu/cdsapp#!/software/app-tourism-fire-danger-indicators-projections?tab=app
 
-## Download CMIP6 Datasets
+## Download CMIP6 Dataset
 
 Use the search option, select search for Dataset and enter **CMIP6** as search term:
 https://cds.climate.copernicus.eu/cdsapp#!/search?type=dataset
@@ -16,19 +16,24 @@ https://cds.climate.copernicus.eu/cdsapp#!/search?type=dataset
 :scale: 50%
 ```
 
-The will let you to this download formular:
+The will let you to this download form:
 https://cds.climate.copernicus.eu/cdsapp#!/dataset/projections-cmip6?tab=form
 
-Search:
-* Variable: Near-surface air temperature (tas)
-* Model: MPI-ESM1-2-HR (Germany)
-* Time: 2000-01-01/2000-01-31
+Select:
+* Temporal resolution: Monthly
+* Experiment: Historical
+* Level:      1000 hPa
+* Variable:   Air temperature
+* Model:      MPI-ESM1-2-HR (Germany)
+* Temporal range:    2000-01-01/2000-01-31
 * Area (Africa): -40W, 70E, 70N, -40S
 
-Submit Formular.
+Click on "Submit Form".
 
-This will open a page with your running requests:
+This will open a page with your CDS requests:
 https://cds.climate.copernicus.eu/cdsapp#!/yourrequests
+
+Now you option to download the requested data as zip file. The zip file contains a netCDF file and two so-called "provenance files" which documents the history of the file (we come to this later). 
 
 ## Use Climate Data Store Toolbox Editor
 
