@@ -1,6 +1,6 @@
 # CDS: Live Demo
 
-You need to register and login to the Climate Data Store:
+You need to register and login to the Climate Data Store (CDS):
 https://cds.climate.copernicus.eu/
 
 ## Coperniucs Climate Data Store Application
