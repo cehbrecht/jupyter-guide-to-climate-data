@@ -130,6 +130,11 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="cdo-cmor.html">
+   cdo cmor: basic standardizing examples (“CMORizing”)
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="Regrid_xESMF.html">
    Regridding with xESMF
   </a>
@@ -137,6 +142,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="esgf-subset-cmip6.html">
    ESGF: Subset CMIP6 Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cdo-subset-cmip6.html">
+   cdo: run subset operations (command line)
   </a>
  </li>
  <li class="toctree-l1">
@@ -307,23 +317,35 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#download-cmip6-datasets">
-   Download CMIP6 Datasets
+  <a class="reference internal nav-link" href="#download-cmip6-dataset-by-submitting-the-cds-web-form">
+   Download CMIP6 Dataset by submitting the CDS web form
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#use-climate-data-store-toolbox-editor">
-   Use Climate Data Store Toolbox Editor
+  <a class="reference internal nav-link" href="#use-climate-data-store-cds-toolbox-editor">
+   Use Climate Data Store (CDS) Toolbox Editor
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#download-cmip6-dataset">
+     Download CMIP6 Dataset
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#download-and-plot-cmip6-dataset">
+     Download and plot CMIP6 Dataset
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#use-the-climate-data-store-api">
+   Use the Climate Data Store API
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#use-climate-data-store-api">
-   Use Climate Data Store API
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#use-rooki-to-access-cmip6-data">
-   Use Rooki to access CMIP6 data
+  <a class="reference internal nav-link" href="#for-experts-use-rooki-to-access-cmip6-data">
+   For experts: Use Rooki to access CMIP6 data
   </a>
  </li>
 </ul>
@@ -351,23 +373,35 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#download-cmip6-datasets">
-   Download CMIP6 Datasets
+  <a class="reference internal nav-link" href="#download-cmip6-dataset-by-submitting-the-cds-web-form">
+   Download CMIP6 Dataset by submitting the CDS web form
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#use-climate-data-store-toolbox-editor">
-   Use Climate Data Store Toolbox Editor
+  <a class="reference internal nav-link" href="#use-climate-data-store-cds-toolbox-editor">
+   Use Climate Data Store (CDS) Toolbox Editor
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#download-cmip6-dataset">
+     Download CMIP6 Dataset
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#download-and-plot-cmip6-dataset">
+     Download and plot CMIP6 Dataset
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#use-the-climate-data-store-api">
+   Use the Climate Data Store API
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#use-climate-data-store-api">
-   Use Climate Data Store API
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#use-rooki-to-access-cmip6-data">
-   Use Rooki to access CMIP6 data
+  <a class="reference internal nav-link" href="#for-experts-use-rooki-to-access-cmip6-data">
+   For experts: Use Rooki to access CMIP6 data
   </a>
  </li>
 </ul>
@@ -382,97 +416,126 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="cds-live-demo">
 <h1>CDS: Live Demo<a class="headerlink" href="#cds-live-demo" title="Permalink to this headline">#</a></h1>
-<p>You need to register and login to the Climate Data Store:
+<p>Please register and login to the Climate Data Store (CDS):
 <a class="reference external" href="https://cds.climate.copernicus.eu/">https://cds.climate.copernicus.eu/</a></p>
 <section id="coperniucs-climate-data-store-application">
 <h2>Coperniucs Climate Data Store Application<a class="headerlink" href="#coperniucs-climate-data-store-application" title="Permalink to this headline">#</a></h2>
 <p><a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#%21/software/app-tourism-fire-danger-indicators-projections?tab=app">https://cds.climate.copernicus.eu/cdsapp#!/software/app-tourism-fire-danger-indicators-projections?tab=app</a></p>
 </section>
-<section id="download-cmip6-datasets">
-<h2>Download CMIP6 Datasets<a class="headerlink" href="#download-cmip6-datasets" title="Permalink to this headline">#</a></h2>
-<p>Search Datasets for <strong>CMIP6</strong>:
+<section id="download-cmip6-dataset-by-submitting-the-cds-web-form">
+<h2>Download CMIP6 Dataset by submitting the CDS web form<a class="headerlink" href="#download-cmip6-dataset-by-submitting-the-cds-web-form" title="Permalink to this headline">#</a></h2>
+<p>Use the search option, select search for Dataset and enter <strong>CMIP6</strong> as search term:
 <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#%21/search?type=dataset">https://cds.climate.copernicus.eu/cdsapp#!/search?type=dataset</a></p>
-<p>The will let you to this download formular:
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/CDS_searchbar.png"><img alt="_images/CDS_searchbar.png" src="_images/CDS_searchbar.png" style="width: 900.0px; height: 328.0px;" /></a>
+</figure>
+<p>The will let you to this download form:
 <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#%21/dataset/projections-cmip6?tab=form">https://cds.climate.copernicus.eu/cdsapp#!/dataset/projections-cmip6?tab=form</a></p>
-<p>Search:</p>
+<p>Select:</p>
 <ul class="simple">
-<li><p>Variable: Near-surface air temperature (tas)</p></li>
-<li><p>Model: MPI-ESM1-2-HR (Germany)</p></li>
-<li><p>Time: 2000-01-01/2000-01-31</p></li>
+<li><p>Temporal resolution: Monthly</p></li>
+<li><p>Experiment: Historical</p></li>
+<li><p>Level:      1000 hPa</p></li>
+<li><p>Variable:   Air temperature</p></li>
+<li><p>Model:      MPI-ESM1-2-HR (Germany)</p></li>
+<li><p>Temporal range:    2000-01-01/2000-12-31</p></li>
 <li><p>Area (Africa): -40W, 70E, 70N, -40S</p></li>
 </ul>
-<p>Submit Formular.</p>
-<p>This will open a page with your running requests:
+<p>Click on “Submit Form”.</p>
+<p>This will open a page with your CDS requests:
 <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#%21/yourrequests">https://cds.climate.copernicus.eu/cdsapp#!/yourrequests</a></p>
+<p>Now you option to download the requested data as zip file. The zip file contains a netCDF file and two so-called “provenance files” which documents the history of the file (we come to this later).</p>
 </section>
-<section id="use-climate-data-store-toolbox-editor">
-<h2>Use Climate Data Store Toolbox Editor<a class="headerlink" href="#use-climate-data-store-toolbox-editor" title="Permalink to this headline">#</a></h2>
-<p>The Toolbox Editor provides a simliar environment like <a class="reference external" href="https://jupyter.org/">Jupyter Notebooks</a>.
-But the toolbox is only available in the Climate Data Store.
+<section id="use-climate-data-store-cds-toolbox-editor">
+<h2>Use Climate Data Store (CDS) Toolbox Editor<a class="headerlink" href="#use-climate-data-store-cds-toolbox-editor" title="Permalink to this headline">#</a></h2>
+<p>The CDS Toolbox Editor provides an environment similar to <a class="reference external" href="https://jupyter.org/">Jupyter Notebooks</a>.
+The toolbox, however, is only available in the Climate Data Store.
 There are plans to provide a toolbox API to be used in your own Jupyter Notebooks.</p>
-<p>Use the same dataset search as above.</p>
-<p>Use the button <em>Show Toolbox request</em> and copy the data request:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">catalogue</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
-        <span class="s1">&#39;projections-cmip6&#39;</span><span class="p">,</span>
-        <span class="p">{</span>
-            <span class="s1">&#39;temporal_resolution&#39;</span><span class="p">:</span> <span class="s1">&#39;monthly&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;experiment&#39;</span><span class="p">:</span> <span class="s1">&#39;historical&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;level&#39;</span><span class="p">:</span> <span class="s1">&#39;single_levels&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;near_surface_air_temperature&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;model&#39;</span><span class="p">:</span> <span class="s1">&#39;mpi_esm1_2_hr&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2000-01-01/2000-01-31&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;area&#39;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="mi">70</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">,</span>
-                <span class="mi">70</span><span class="p">,</span>
-            <span class="p">],</span>
-        <span class="p">}</span>
-    <span class="p">)</span>
-</pre></div>
-</div>
-<p>Open the toolbox editor:
-<a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#%21/toolbox">https://cds.climate.copernicus.eu/cdsapp#!/toolbox</a></p>
-<p>Load or create the application to plot the CMIP6 data with the above data request:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cdstoolbox</span> <span class="k">as</span> <span class="nn">ct</span>
+<section id="download-cmip6-dataset">
+<h3>Download CMIP6 Dataset<a class="headerlink" href="#download-cmip6-dataset" title="Permalink to this headline">#</a></h3>
+<p>Use the CDS Toolbox Editor to search the same CMIP6 dataset as above.
+Follow the same steps, but click on <em>Show Toolbox request</em> instead of <em>Submit Form</em>.
+Copy the entire data request code.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cdstoolbox</span> <span class="k">as</span> <span class="nn">ct</span>
 
-<span class="nd">@ct</span><span class="o">.</span><span class="n">application</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Plot CMIP6&#39;</span><span class="p">)</span>
-<span class="nd">@ct</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="k">def</span> <span class="nf">plot_cmip6</span><span class="p">():</span>
+<span class="nd">@ct</span><span class="o">.</span><span class="n">application</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Download data&#39;</span><span class="p">)</span>
+<span class="nd">@ct</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">download</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">download_application</span><span class="p">():</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">catalogue</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
         <span class="s1">&#39;projections-cmip6&#39;</span><span class="p">,</span>
         <span class="p">{</span>
             <span class="s1">&#39;temporal_resolution&#39;</span><span class="p">:</span> <span class="s1">&#39;monthly&#39;</span><span class="p">,</span>
             <span class="s1">&#39;experiment&#39;</span><span class="p">:</span> <span class="s1">&#39;historical&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;level&#39;</span><span class="p">:</span> <span class="s1">&#39;single_levels&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;near_surface_air_temperature&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;level&#39;</span><span class="p">:</span> <span class="s1">&#39;1000&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;air_temperature&#39;</span><span class="p">,</span>
             <span class="s1">&#39;model&#39;</span><span class="p">:</span> <span class="s1">&#39;mpi_esm1_2_hr&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2000-01-01/2000-01-31&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2000-01-01/2000-12-31&#39;</span><span class="p">,</span>
             <span class="s1">&#39;area&#39;</span><span class="p">:</span> <span class="p">[</span>
                 <span class="mi">70</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">,</span>
                 <span class="mi">70</span><span class="p">,</span>
             <span class="p">],</span>
         <span class="p">}</span>
     <span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span>
+</pre></div>
+</div>
+<p>Open the toolbox editor:
+<a class="reference external" href="https://cds.climate.copernicus.eu/user/login?destination=/toolbox-user">https://cds.climate.copernicus.eu/user/login?destination=/toolbox-user</a></p>
+<p>Paste the code in the Application Window and click on <em>Run</em>.
+On the right side, you will see an option to download the requested CMIP6 data.</p>
+</section>
+<section id="download-and-plot-cmip6-dataset">
+<h3>Download and plot CMIP6 Dataset<a class="headerlink" href="#download-and-plot-cmip6-dataset" title="Permalink to this headline">#</a></h3>
+<p>Combine the download request with plotting the data.
+You can extend the cdstoolbox request code and with code to plot the data.
+Paste the following code in the Application Window and click on <em>Run</em>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cdstoolbox</span> <span class="k">as</span> <span class="nn">ct</span>
+
+<span class="nd">@ct</span><span class="o">.</span><span class="n">application</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Plot CMIP6&#39;</span><span class="p">)</span>
+<span class="nd">@ct</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="nd">@ct</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">download</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">download_application</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">catalogue</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
+        <span class="s1">&#39;projections-cmip6&#39;</span><span class="p">,</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;temporal_resolution&#39;</span><span class="p">:</span> <span class="s1">&#39;monthly&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;experiment&#39;</span><span class="p">:</span> <span class="s1">&#39;historical&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;level&#39;</span><span class="p">:</span> <span class="s1">&#39;1000&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;air_temperature&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;model&#39;</span><span class="p">:</span> <span class="s1">&#39;mpi_esm1_2_hr&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2000-01-01/2000-12-31&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;area&#39;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="mi">70</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">,</span>
+                <span class="mi">70</span><span class="p">,</span>
+            <span class="p">],</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+
     <span class="n">fig</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;CMIP6 Plot&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">fig</span>
 </pre></div>
 </div>
-<p>Run the application to generate the plot.</p>
 </section>
-<section id="use-climate-data-store-api">
-<h2>Use Climate Data Store API<a class="headerlink" href="#use-climate-data-store-api" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="use-the-climate-data-store-api">
+<h2>Use the Climate Data Store API<a class="headerlink" href="#use-the-climate-data-store-api" title="Permalink to this headline">#</a></h2>
 <p>The <a class="reference external" href="https://pypi.org/project/cdsapi/">Climate Data Store API</a> is a Python library to download data from the Climate Data Store.</p>
-<p>You need an access key. Read the <a class="reference external" href="https://pypi.org/project/cdsapi/">Climate Data Store API</a> documentation how to get the access key and configure it.</p>
-<p>Use the same dataset search as above.</p>
-<p>Use the button <em>Show API request</em> and copy the data request</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
+<p>You need an access key. Read the <a class="reference external" href="https://pypi.org/project/cdsapi/">Climate Data Store API</a> documentation how configurethe access key.</p>
+<p>Use the CMIP6 dataset (see above). Follow the same steps, but click on <em>Show API request</em> instead of <em>Submit Form</em>.</p>
+<p>Copy the API data request code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cdsapi</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
+
+<span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
     <span class="s1">&#39;projections-cmip6&#39;</span><span class="p">,</span>
     <span class="p">{</span>
         <span class="s1">&#39;temporal_resolution&#39;</span><span class="p">:</span> <span class="s1">&#39;monthly&#39;</span><span class="p">,</span>
         <span class="s1">&#39;experiment&#39;</span><span class="p">:</span> <span class="s1">&#39;historical&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;level&#39;</span><span class="p">:</span> <span class="s1">&#39;single_levels&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;near_surface_air_temperature&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;level&#39;</span><span class="p">:</span> <span class="s1">&#39;1000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;air_temperature&#39;</span><span class="p">,</span>
         <span class="s1">&#39;model&#39;</span><span class="p">:</span> <span class="s1">&#39;mpi_esm1_2_hr&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2000-01-01/2000-01-31&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2000-01-01/2000-12-31&#39;</span><span class="p">,</span>
         <span class="s1">&#39;area&#39;</span><span class="p">:</span> <span class="p">[</span>
             <span class="mi">70</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">,</span>
             <span class="mi">70</span><span class="p">,</span>
@@ -482,15 +545,14 @@ There are plans to provide a toolbox API to be used in your own Jupyter Notebook
     <span class="s1">&#39;download.zip&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Open the notebook <a class="reference external" href="https://cehbrecht.github.io/jupyter-guide-to-climate-data/cdsapi.html">cdsapi.ipynb</a> and replace the data request.</p>
+<p>We now demonstrate the usage of this API data request code in a Jupyter notebook. Please open the notebook <a class="reference external" href="https://cehbrecht.github.io/jupyter-guide-to-climate-data/cdsapi.html">cdsapi.ipynb</a>.</p>
 <p>Run the notebook.</p>
 </section>
-<section id="use-rooki-to-access-cmip6-data">
-<h2>Use Rooki to access CMIP6 data<a class="headerlink" href="#use-rooki-to-access-cmip6-data" title="Permalink to this headline">#</a></h2>
-<p><a class="reference external" href="https://github.com/roocs/rooki">Rooki</a> is a Python client to interact with <a class="reference external" href="https://github.com/roocs/rook">Rook</a> data subsetting service for climate model data. This service is used in the backend by the Climate Data Store to access the CMIP6 data pool. The Rook service is deployed for load-balancing at CEDA (UK), IPSL (FR) and DKRZ (DE).</p>
+<section id="for-experts-use-rooki-to-access-cmip6-data">
+<h2>For experts: Use Rooki to access CMIP6 data<a class="headerlink" href="#for-experts-use-rooki-to-access-cmip6-data" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://github.com/roocs/rooki">Rooki</a> is a Python client to interact with the <a class="reference external" href="https://github.com/roocs/rook">Rook</a> data subsetting service for climate model data. This service is used in the backend by the Climate Data Store to access the CMIP6 data pool. The Rook service is deployed for load-balancing at CEDA (UK), IPSL (FR) and DKRZ (DE).</p>
 <p>ROOK: <strong>R</strong>emote <strong>O</strong>perations <strong>O</strong>n <strong>K</strong>limadaten</p>
-<p>Open the notebook <a class="reference external" href="https://cehbrecht.github.io/jupyter-guide-to-climate-data/rooki.html">rooki.ipynb</a>.</p>
-<p>Run the notebook.</p>
+<p>To try out: Run the notebook <a class="reference external" href="https://cehbrecht.github.io/jupyter-guide-to-climate-data/rooki.html">rooki.ipynb</a>.</p>
 </section>
 </section>
 
