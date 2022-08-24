@@ -29,6 +29,22 @@ dependencies:
 - netcdf4>=1.4
 - xarray>=0.15,<2022.6.0
 - dask>=2.6.0
+- nc-time-axis
+- xarray-spatial
+- cfgrib
+# cloud
+- zarr
+- intake
+- intake-esm
+- aiohttp
+- s3fs
+- gcsfs
+# stac
+- pystac-client
+- planetary-computer
+- rasterio
+- rioxarray
+- geopy
 # clisops, xesmf, plotting
 - bottleneck>=1.3.1,<1.4
 - cf_xarray>=0.7.0
@@ -57,7 +73,6 @@ dependencies:
 - pip:
   - rooki
   - psy-maps
-#  - intake-esm==2020.8.15
   - clisops @ git+https://github.com/roocs/clisops/@regrid-main#egg=clisops
 # - clisops @ git+https://github.com/roocs/clisops/@master#egg=clisops
 #    - cf-xarray @ git+https://github.com/xarray-contrib/cf-xarray/@main#egg=cf-xarray
