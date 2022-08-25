@@ -65,12 +65,6 @@ make publish
 
 Login to levante ... or use terminal in jupyter.
 
-To use the jupyter kernel we provide, create a link as follows:
-`ln -s /work/bm0021/conda-envs-public/kernels/share/jupyter/kernels/summerschool_2022 ${HOME}/.local/share/jupyter/kernels/summerschool_2022`
-Then, open notebooks in Jupyter and choose kernel "summerschool_2022"
-
-
-Alternatively, to create your own conda environment and jupyter kernel, follow the steps below:
 
 Get source:
 ```
@@ -78,6 +72,16 @@ git clone https://github.com/cehbrecht/jupyter-guide-to-climate-data.git
 
 cd jupyter-guide-to-climate-data
 ```
+
+To use the jupyter kernel we provide, create a link as follows:
+
+`ln -s /work/bm0021/conda-envs-public/kernels/share/jupyter/kernels/summerschool_2022 ${HOME}/.local/share/jupyter/kernels/summerschool_2022`
+
+Then, open notebooks in Jupyter and choose kernel "summerschool_2022"
+
+
+**Alternatively**, to create your own conda environment and jupyter kernel, follow the steps below:
+
 
 Init conda:
 ```
