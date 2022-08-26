@@ -1,0 +1,794 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Provenance Demo &#8212; Jupyter Guide to Climate Data</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CLINT - Climate Intelligence" href="CLINT.html" />
+    <link rel="prev" title="CDS Demo: Use Rooki to access CMIP6 data" href="rooki.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Jupyter Guide to Climate Data</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Jupyter Guide to Climate Data
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cdo.html">
+   CDO
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="xarray.html">
+   Data Chunking with Dask
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cdo-cmor.html">
+   cdo cmor: basic standardizing examples (“CMORizing”)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Regrid_xESMF.html">
+   Regridding with xESMF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="esgf-subset-cmip6.html">
+   ESGF: Subset CMIP6 Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cdo-subset-cmip6.html">
+   cdo: run subset operations (command line)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CDS.html">
+   Copernicus Climate Data Store
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CDS-demo.html">
+   CDS: Live Demo
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cdsapi.html">
+   CDS Demo: Using Climate Data Store API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="rooki.html">
+   CDS Demo: Use Rooki to access CMIP6 data
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Provenance Demo
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CLINT.html">
+   CLINT - Climate Intelligence
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CLINT-demo.html">
+   CLINT - Demo
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gis.html">
+   Prepare modeling data for GIS analyses
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/cehbrecht/jupyter-guide-to-climate-data/main?urlpath=tree/PROV.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/PROV.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#namespaces">
+   Namespaces
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#software">
+   Software
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#project">
+   Project
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#datasets">
+   Datasets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#operators">
+   Operators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#workflow">
+   Workflow
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-subset-operator">
+   Run Subset Operator
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-diff-operator">
+   Run Diff Operator
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#show-provenance">
+   Show Provenance
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Provenance Demo</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#namespaces">
+   Namespaces
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#software">
+   Software
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#project">
+   Project
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#datasets">
+   Datasets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#operators">
+   Operators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#workflow">
+   Workflow
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-subset-operator">
+   Run Subset Operator
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-diff-operator">
+   Run Diff Operator
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#show-provenance">
+   Show Provenance
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="provenance-demo">
+<h1>Provenance Demo<a class="headerlink" href="#provenance-demo" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pypi.org/project/prov/">https://pypi.org/project/prov/</a></p></li>
+<li><p><a class="reference external" href="https://github.com/cehbrecht/provenance-demo">https://github.com/cehbrecht/provenance-demo</a></p></li>
+</ul>
+<p>Python PROV libray:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://prov.readthedocs.io/en/latest/index.html">https://prov.readthedocs.io/en/latest/index.html</a></p></li>
+<li><p><a class="reference external" href="https://openprovenance.org/store/">https://openprovenance.org/store/</a></p></li>
+<li><p><a class="reference external" href="https://trungdong.github.io/prov-python-short-tutorial.html">https://trungdong.github.io/prov-python-short-tutorial.html</a></p></li>
+<li><p><a class="reference external" href="https://nbviewer.ipython.org/github/trungdong/notebooks/blob/master/PROV%20Tutorial.ipynb">https://nbviewer.ipython.org/github/trungdong/notebooks/blob/master/PROV Tutorial.ipynb</a></p></li>
+<li><p><a class="reference external" href="https://github.com/trungdong/prov/blob/master/src/prov/tests/examples.py">https://github.com/trungdong/prov/blob/master/src/prov/tests/examples.py</a></p></li>
+</ul>
+<p>ESMValTool Provenance:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/ESMValGroup/ESMValCore/blob/master/esmvalcore/_provenance.py">https://github.com/ESMValGroup/ESMValCore/blob/master/esmvalcore/_provenance.py</a></p></li>
+<li><p><a class="reference external" href="https://docs.esmvaltool.org/en/latest/community/diagnostic.html?highlight=provenance#recording-provenance">https://docs.esmvaltool.org/en/latest/community/diagnostic.html?highlight=provenance#recording-provenance</a></p></li>
+<li><p><a class="reference external" href="https://esmvaltool.cloud.dkrz.de/shared/esmvaltool/v2.0.0/">https://esmvaltool.cloud.dkrz.de/shared/esmvaltool/v2.0.0/</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">prov.model</span> <span class="kn">import</span> <span class="n">ProvDocument</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new provenance document</span>
+<span class="n">doc</span> <span class="o">=</span> <span class="n">ProvDocument</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="namespaces">
+<h2>Namespaces<a class="headerlink" href="#namespaces" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Declaring namespaces for various prefixes used in the example</span>
+<span class="n">ROOCS_URI_PREFIX</span> <span class="o">=</span> <span class="s1">&#39;https://roocs.org/&#39;</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">add_namespace</span><span class="p">(</span><span class="s1">&#39;software&#39;</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">ROOCS_URI_PREFIX</span> <span class="o">+</span> <span class="s1">&#39;software&#39;</span><span class="p">)</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">add_namespace</span><span class="p">(</span><span class="s1">&#39;project&#39;</span><span class="p">,</span> <span class="n">ROOCS_URI_PREFIX</span> <span class="o">+</span> <span class="s1">&#39;project&#39;</span><span class="p">)</span>  <span class="c1"># copernicus, roocs</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">add_namespace</span><span class="p">(</span><span class="s1">&#39;workflow&#39;</span><span class="p">,</span> <span class="n">ROOCS_URI_PREFIX</span> <span class="o">+</span> <span class="s1">&#39;workflow&#39;</span><span class="p">)</span>  <span class="c1"># workflow description</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">add_namespace</span><span class="p">(</span><span class="s1">&#39;operator&#39;</span><span class="p">,</span> <span class="n">ROOCS_URI_PREFIX</span> <span class="o">+</span> <span class="s1">&#39;operator&#39;</span><span class="p">)</span>  <span class="c1"># task, job, calculation, algorithm</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">add_namespace</span><span class="p">(</span><span class="s1">&#39;parameter&#39;</span><span class="p">,</span> <span class="n">ROOCS_URI_PREFIX</span> <span class="o">+</span> <span class="s1">&#39;parameter&#39;</span><span class="p">)</span> <span class="c1"># operator parameter, option</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">add_namespace</span><span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="n">ROOCS_URI_PREFIX</span> <span class="o">+</span> <span class="s1">&#39;file&#39;</span><span class="p">)</span>  <span class="c1"># netcdf, plots</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">add_namespace</span><span class="p">(</span><span class="s1">&#39;attribute&#39;</span><span class="p">,</span> <span class="n">ROOCS_URI_PREFIX</span> <span class="o">+</span> <span class="s1">&#39;attribute&#39;</span><span class="p">)</span>  <span class="c1"># netcdf attributes, headers variables</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Namespace: attribute {https://roocs.org/attribute}&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="software">
+<h2>Software<a class="headerlink" href="#software" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daops</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">activity</span><span class="p">(</span><span class="s1">&#39;software:daops==v0.2.0&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="project">
+<h2>Project<a class="headerlink" href="#project" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">project_cds</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">agent</span><span class="p">(</span><span class="s1">&#39;project:Copernicus Climate Data Store&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="datasets">
+<h2>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attributes</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;attribute:variable&#39;</span><span class="p">:</span> <span class="s1">&#39;tas&#39;</span><span class="p">}</span>
+<span class="n">ds_mpi</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">entity</span><span class="p">(</span><span class="s1">&#39;file:/data/cmip6/mpi_tas_2000-2010.nc&#39;</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span>
+<span class="n">ds_ipsl</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">entity</span><span class="p">(</span><span class="s1">&#39;file:/data/cmip6/ipsl_tas_2000-2010.nc&#39;</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">op_subset</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">activity</span><span class="p">(</span><span class="s1">&#39;operator:subset&#39;</span><span class="p">,</span> <span class="n">other_attributes</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;parameter:time&#39;</span><span class="p">:</span> <span class="s1">&#39;2005&#39;</span><span class="p">})</span>
+<span class="n">op_diff</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">activity</span><span class="p">(</span><span class="s1">&#39;operator:diff&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="workflow">
+<h2>Workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create workflow</span>
+<span class="n">wf_diff</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">entity</span><span class="p">(</span><span class="s1">&#39;workflow:diff.json&#39;</span><span class="p">)</span>
+
+<span class="c1"># Relate workflow to project</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">wasAttributedTo</span><span class="p">(</span><span class="n">wf_diff</span><span class="p">,</span> <span class="n">project_cds</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ProvAttribution: (workflow:diff.json, project:Copernicus Climate Data Store)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="run-subset-operator">
+<h2>Run Subset Operator<a class="headerlink" href="#run-subset-operator" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># subset started by daops</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">op_subset</span><span class="p">,</span> <span class="n">starter</span><span class="o">=</span><span class="n">daops</span><span class="p">,</span> <span class="n">trigger</span><span class="o">=</span><span class="n">wf_diff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ProvStart: (operator:subset, workflow:diff.json)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generated output file for mpi dataet</span>
+<span class="n">output1</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">entity</span><span class="p">(</span><span class="s1">&#39;file:mpi_tas_2005.nc&#39;</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">wasDerivedFrom</span><span class="p">(</span><span class="n">output1</span><span class="p">,</span> <span class="n">ds_mpi</span><span class="p">,</span> <span class="n">activity</span><span class="o">=</span><span class="n">op_subset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ProvDerivation: (file:mpi_tas_2005.nc, file:/data/cmip6/mpi_tas_2000-2010.nc)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generated output file for ipsl dataset</span>
+<span class="n">output2</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">entity</span><span class="p">(</span><span class="s1">&#39;file:ipsl_tas_2005.nc&#39;</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">wasDerivedFrom</span><span class="p">(</span><span class="n">output2</span><span class="p">,</span> <span class="n">ds_ipsl</span><span class="p">,</span> <span class="n">activity</span><span class="o">=</span><span class="n">op_subset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ProvDerivation: (file:ipsl_tas_2005.nc, file:/data/cmip6/ipsl_tas_2000-2010.nc)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="run-diff-operator">
+<h2>Run Diff Operator<a class="headerlink" href="#run-diff-operator" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># diff started by daops</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">op_diff</span><span class="p">,</span> <span class="n">starter</span><span class="o">=</span><span class="n">daops</span><span class="p">,</span> <span class="n">trigger</span><span class="o">=</span><span class="n">wf_diff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ProvStart: (operator:diff, workflow:diff.json)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generated output</span>
+<span class="n">output_diff</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">entity</span><span class="p">(</span><span class="s1">&#39;file:diff_tas_2005.nc&#39;</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">wasDerivedFrom</span><span class="p">(</span><span class="n">output_diff</span><span class="p">,</span> <span class="n">output1</span><span class="p">,</span> <span class="n">activity</span><span class="o">=</span><span class="n">op_diff</span><span class="p">)</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">wasDerivedFrom</span><span class="p">(</span><span class="n">output_diff</span><span class="p">,</span> <span class="n">output2</span><span class="p">,</span> <span class="n">activity</span><span class="o">=</span><span class="n">op_diff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ProvDerivation: (file:diff_tas_2005.nc, file:ipsl_tas_2005.nc)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="show-provenance">
+<h2>Show Provenance<a class="headerlink" href="#show-provenance" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">get_provn</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>document
+  prefix software &lt;https://roocs.org/software&gt;
+  prefix project &lt;https://roocs.org/project&gt;
+  prefix workflow &lt;https://roocs.org/workflow&gt;
+  prefix operator &lt;https://roocs.org/operator&gt;
+  prefix parameter &lt;https://roocs.org/parameter&gt;
+  prefix file &lt;https://roocs.org/file&gt;
+  prefix attribute &lt;https://roocs.org/attribute&gt;
+  
+  activity(software:daops==v0.2.0, -, -)
+  agent(project:Copernicus Climate Data Store)
+  entity(file:/data/cmip6/mpi_tas_2000-2010.nc, [attribute:variable=&quot;tas&quot;])
+  entity(file:/data/cmip6/ipsl_tas_2000-2010.nc, [attribute:variable=&quot;tas&quot;])
+  activity(operator:subset, -, -, [parameter:time=&quot;2005&quot;])
+  activity(operator:diff, -, -)
+  entity(workflow:diff.json)
+  wasAttributedTo(workflow:diff.json, project:Copernicus Climate Data Store)
+  wasStartedBy(operator:subset, workflow:diff.json, software:daops==v0.2.0, -)
+  entity(file:mpi_tas_2005.nc, [attribute:variable=&quot;tas&quot;])
+  wasDerivedFrom(file:mpi_tas_2005.nc, file:/data/cmip6/mpi_tas_2000-2010.nc, operator:subset, -, -)
+  entity(file:ipsl_tas_2005.nc, [attribute:variable=&quot;tas&quot;])
+  wasDerivedFrom(file:ipsl_tas_2005.nc, file:/data/cmip6/ipsl_tas_2000-2010.nc, operator:subset, -, -)
+  wasStartedBy(operator:diff, workflow:diff.json, software:daops==v0.2.0, -)
+  entity(file:diff_tas_2005.nc, [attribute:variable=&quot;tas&quot;])
+  wasDerivedFrom(file:diff_tas_2005.nc, file:mpi_tas_2005.nc, operator:diff, -, -)
+  wasDerivedFrom(file:diff_tas_2005.nc, file:ipsl_tas_2005.nc, operator:diff, -, -)
+endDocument
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "cehbrecht/jupyter-guide-to-climate-data",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "summerschool_2022"
+        },
+        kernelOptions: {
+            kernelName: "summerschool_2022",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'summerschool_2022'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="rooki.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">CDS Demo: Use Rooki to access CMIP6 data</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="CLINT.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">CLINT - Climate Intelligence</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By DKRZ<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

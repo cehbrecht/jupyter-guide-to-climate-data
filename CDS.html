@@ -1,0 +1,796 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Copernicus Climate Data Store &#8212; Jupyter Guide to Climate Data</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CDS: Live Demo" href="CDS-demo.html" />
+    <link rel="prev" title="cdo: run subset operations (command line)" href="cdo-subset-cmip6.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Jupyter Guide to Climate Data</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Jupyter Guide to Climate Data
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cdo.html">
+   CDO
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="xarray.html">
+   Data Chunking with Dask
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cdo-cmor.html">
+   cdo cmor: basic standardizing examples (“CMORizing”)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Regrid_xESMF.html">
+   Regridding with xESMF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="esgf-subset-cmip6.html">
+   ESGF: Subset CMIP6 Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cdo-subset-cmip6.html">
+   cdo: run subset operations (command line)
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Copernicus Climate Data Store
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CDS-demo.html">
+   CDS: Live Demo
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cdsapi.html">
+   CDS Demo: Using Climate Data Store API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="rooki.html">
+   CDS Demo: Use Rooki to access CMIP6 data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="PROV.html">
+   Provenance Demo
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CLINT.html">
+   CLINT - Climate Intelligence
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CLINT-demo.html">
+   CLINT - Demo
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gis.html">
+   Prepare modeling data for GIS analyses
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/CDS.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#external-material">
+   External Material
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#eu-copernicus-programme">
+   EU Copernicus Programme
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#copernicus-services-and-climate-change-service-c3s">
+   Copernicus Services and Climate Change Service (C3S)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-climate-data-store-c3s">
+   C3S Climate Data Store (C3S)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-climate-data-store-cds">
+   C3S Climate Data Store (CDS)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-data-catalogue">
+   C3S CDS Data Catalogue
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-climate-datasets">
+   C3S CDS Climate Datasets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   C3S CDS Data Catalogue
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   C3S CDS Climate Datasets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-example-dataset-selection-era5-hourly">
+   C3S CDS: Example Dataset Selection – ERA5 hourly
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-dataset-information">
+   C3S CDS: Dataset information
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-data-request-via-web-interface">
+   C3S CDS: Data request via web-interface
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-data-request-via-web-interface-2">
+   C3S CDS: Data request via web-interface (2)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-dataset-quality-information">
+   C3S CDS: Dataset quality information
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-data-request-via-cds-toolbox">
+   C3S CDS: Data request via CDS toolbox
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-data-request-via-cds-toolbox-request">
+   C3S CDS: Data request via CDS toolbox request
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-data-request-via-cds-api-request">
+   C3S CDS: Data request via CDS API request
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-data-request-analysis-via-cds-toolbox">
+   C3S CDS: Data request &amp; analysis via CDS toolbox
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   C3S CDS: Data request &amp; analysis via CDS toolbox
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-data-request-via-cds-api">
+   C3S CDS: Data request via CDS API
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-applications">
+   C3S CDS Applications
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-applications-live-demo">
+   C3S CDS Applications: Live Demo
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Copernicus Climate Data Store</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#external-material">
+   External Material
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#eu-copernicus-programme">
+   EU Copernicus Programme
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#copernicus-services-and-climate-change-service-c3s">
+   Copernicus Services and Climate Change Service (C3S)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-climate-data-store-c3s">
+   C3S Climate Data Store (C3S)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-climate-data-store-cds">
+   C3S Climate Data Store (CDS)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-data-catalogue">
+   C3S CDS Data Catalogue
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-climate-datasets">
+   C3S CDS Climate Datasets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   C3S CDS Data Catalogue
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   C3S CDS Climate Datasets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-example-dataset-selection-era5-hourly">
+   C3S CDS: Example Dataset Selection – ERA5 hourly
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-dataset-information">
+   C3S CDS: Dataset information
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-data-request-via-web-interface">
+   C3S CDS: Data request via web-interface
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-data-request-via-web-interface-2">
+   C3S CDS: Data request via web-interface (2)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-dataset-quality-information">
+   C3S CDS: Dataset quality information
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-data-request-via-cds-toolbox">
+   C3S CDS: Data request via CDS toolbox
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-data-request-via-cds-toolbox-request">
+   C3S CDS: Data request via CDS toolbox request
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-data-request-via-cds-api-request">
+   C3S CDS: Data request via CDS API request
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-data-request-analysis-via-cds-toolbox">
+   C3S CDS: Data request &amp; analysis via CDS toolbox
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   C3S CDS: Data request &amp; analysis via CDS toolbox
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-data-request-via-cds-api">
+   C3S CDS: Data request via CDS API
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-applications">
+   C3S CDS Applications
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c3s-cds-applications-live-demo">
+   C3S CDS Applications: Live Demo
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="copernicus-climate-data-store">
+<h1>Copernicus Climate Data Store<a class="headerlink" href="#copernicus-climate-data-store" title="Permalink to this headline">#</a></h1>
+<p><a class="reference external" href="https://cds.climate.copernicus.eu/">https://cds.climate.copernicus.eu/</a></p>
+<ul class="simple">
+<li><p>Copernicus Climate Change Service (C3S)</p></li>
+<li><p>Climate Data Store (CDS)</p></li>
+<li><p>CMIP6 subsetting service</p></li>
+</ul>
+<section id="external-material">
+<h2>External Material<a class="headerlink" href="#external-material" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/cehbrecht/tgif_copernicus">https://github.com/cehbrecht/tgif_copernicus</a></p></li>
+<li><p><a class="reference external" href="https://docs.google.com/presentation/d/1MmbCbASpAJJq5yUgcVXKhNwZTvrRwo_N/edit?usp=sharing&amp;ouid=102118564710801685708&amp;rtpof=true&amp;sd=true">TGIF Slides</a></p></li>
+</ul>
+</section>
+<section id="eu-copernicus-programme">
+<h2>EU Copernicus Programme<a class="headerlink" href="#eu-copernicus-programme" title="Permalink to this headline">#</a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/cds-05.png"><img alt="_images/cds-05.png" src="_images/cds-05.png" style="width: 505.0px; height: 151.0px;" /></a>
+</figure>
+<ul class="simple">
+<li><p>EU’s Earth observation programme</p></li>
+<li><p>provides openly accessible information services to all European citizens</p></li>
+<li><p>NRT satellite Earth Observation data, in-situ observations &amp; model forecasts</p></li>
+<li><p>long-term observational time series, historical model reanalysis, and climate projection data</p></li>
+<li><p>information services are not restricted to data access, but also provide</p>
+<ul>
+<li><p>tools to analyse and visualise data</p></li>
+<li><p>expert assessments of environmental changes and emergency reports</p></li>
+<li><p>operational 24/7 services</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="copernicus-services-and-climate-change-service-c3s">
+<h2>Copernicus Services and Climate Change Service (C3S)<a class="headerlink" href="#copernicus-services-and-climate-change-service-c3s" title="Permalink to this headline">#</a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/cds-06.png"><img alt="_images/cds-06.png" src="_images/cds-06.png" style="width: 764.0px; height: 444.0px;" /></a>
+</figure>
+</section>
+<section id="c3s-climate-data-store-c3s">
+<h2>C3S Climate Data Store (C3S)<a class="headerlink" href="#c3s-climate-data-store-c3s" title="Permalink to this headline">#</a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/cds-10.png"><img alt="_images/cds-10.png" src="_images/cds-10.png" style="width: 882.0px; height: 396.0px;" /></a>
+</figure>
+</section>
+<section id="c3s-climate-data-store-cds">
+<h2>C3S Climate Data Store (CDS)<a class="headerlink" href="#c3s-climate-data-store-cds" title="Permalink to this headline">#</a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/cds-11.png"><img alt="_images/cds-11.png" src="_images/cds-11.png" style="width: 894.0px; height: 458.0px;" /></a>
+</figure>
+</section>
+<section id="c3s-cds-data-catalogue">
+<h2>C3S CDS Data Catalogue<a class="headerlink" href="#c3s-cds-data-catalogue" title="Permalink to this headline">#</a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/cds-12.png"><img alt="_images/cds-12.png" src="_images/cds-12.png" style="width: 898.0px; height: 457.0px;" /></a>
+</figure>
+</section>
+<section id="c3s-cds-climate-datasets">
+<h2>C3S CDS Climate Datasets<a class="headerlink" href="#c3s-cds-climate-datasets" title="Permalink to this headline">#</a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/cds-13.png"><img alt="_images/cds-13.png" src="_images/cds-13.png" style="width: 889.0px; height: 428.0px;" /></a>
+</figure>
+</section>
+<section id="id1">
+<h2>C3S CDS Data Catalogue<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/cds-14.png"><img alt="_images/cds-14.png" src="_images/cds-14.png" style="width: 891.0px; height: 452.0px;" /></a>
+</figure>
+</section>
+<section id="id2">
+<h2>C3S CDS Climate Datasets<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/cds-15.png"><img alt="_images/cds-15.png" src="_images/cds-15.png" style="width: 892.0px; height: 435.0px;" /></a>
+</figure>
+</section>
+<section id="c3s-cds-example-dataset-selection-era5-hourly">
+<h2>C3S CDS: Example Dataset Selection – ERA5 hourly<a class="headerlink" href="#c3s-cds-example-dataset-selection-era5-hourly" title="Permalink to this headline">#</a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/cds-16.png"><img alt="_images/cds-16.png" src="_images/cds-16.png" style="width: 892.0px; height: 438.0px;" /></a>
+</figure>
+</section>
+<section id="c3s-cds-dataset-information">
+<h2>C3S CDS: Dataset information<a class="headerlink" href="#c3s-cds-dataset-information" title="Permalink to this headline">#</a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/cds-17.png"><img alt="_images/cds-17.png" src="_images/cds-17.png" style="width: 751.0px; height: 449.0px;" /></a>
+</figure>
+</section>
+<section id="c3s-cds-data-request-via-web-interface">
+<h2>C3S CDS: Data request via web-interface<a class="headerlink" href="#c3s-cds-data-request-via-web-interface" title="Permalink to this headline">#</a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/cds-18.png"><img alt="_images/cds-18.png" src="_images/cds-18.png" style="width: 752.0px; height: 455.0px;" /></a>
+</figure>
+</section>
+<section id="c3s-cds-data-request-via-web-interface-2">
+<h2>C3S CDS: Data request via web-interface (2)<a class="headerlink" href="#c3s-cds-data-request-via-web-interface-2" title="Permalink to this headline">#</a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/cds-19.png"><img alt="_images/cds-19.png" src="_images/cds-19.png" style="width: 911.0px; height: 461.0px;" /></a>
+</figure>
+</section>
+<section id="c3s-cds-dataset-quality-information">
+<h2>C3S CDS: Dataset quality information<a class="headerlink" href="#c3s-cds-dataset-quality-information" title="Permalink to this headline">#</a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/cds-20.png"><img alt="_images/cds-20.png" src="_images/cds-20.png" style="width: 797.0px; height: 421.0px;" /></a>
+</figure>
+</section>
+<section id="c3s-cds-data-request-via-cds-toolbox">
+<h2>C3S CDS: Data request via CDS toolbox<a class="headerlink" href="#c3s-cds-data-request-via-cds-toolbox" title="Permalink to this headline">#</a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/cds-21.png"><img alt="_images/cds-21.png" src="_images/cds-21.png" style="width: 767.0px; height: 454.0px;" /></a>
+</figure>
+</section>
+<section id="c3s-cds-data-request-via-cds-toolbox-request">
+<h2>C3S CDS: Data request via CDS toolbox request<a class="headerlink" href="#c3s-cds-data-request-via-cds-toolbox-request" title="Permalink to this headline">#</a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/cds-22.png"><img alt="_images/cds-22.png" src="_images/cds-22.png" style="width: 861.0px; height: 460.0px;" /></a>
+</figure>
+</section>
+<section id="c3s-cds-data-request-via-cds-api-request">
+<h2>C3S CDS: Data request via CDS API request<a class="headerlink" href="#c3s-cds-data-request-via-cds-api-request" title="Permalink to this headline">#</a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/cds-23.png"><img alt="_images/cds-23.png" src="_images/cds-23.png" style="width: 897.0px; height: 458.0px;" /></a>
+</figure>
+</section>
+<section id="c3s-cds-data-request-analysis-via-cds-toolbox">
+<h2>C3S CDS: Data request &amp; analysis via CDS toolbox<a class="headerlink" href="#c3s-cds-data-request-analysis-via-cds-toolbox" title="Permalink to this headline">#</a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/cds-24.png"><img alt="_images/cds-24.png" src="_images/cds-24.png" style="width: 876.0px; height: 450.0px;" /></a>
+</figure>
+</section>
+<section id="id3">
+<h2>C3S CDS: Data request &amp; analysis via CDS toolbox<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/cds-25.png"><img alt="_images/cds-25.png" src="_images/cds-25.png" style="width: 897.0px; height: 457.0px;" /></a>
+</figure>
+</section>
+<section id="c3s-cds-data-request-via-cds-api">
+<h2>C3S CDS: Data request via CDS API<a class="headerlink" href="#c3s-cds-data-request-via-cds-api" title="Permalink to this headline">#</a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/cds-26.png"><img alt="_images/cds-26.png" src="_images/cds-26.png" style="width: 792.0px; height: 464.0px;" /></a>
+</figure>
+</section>
+<section id="c3s-cds-applications">
+<h2>C3S CDS Applications<a class="headerlink" href="#c3s-cds-applications" title="Permalink to this headline">#</a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/cds-27.png"><img alt="_images/cds-27.png" src="_images/cds-27.png" style="width: 881.0px; height: 493.0px;" /></a>
+</figure>
+</section>
+<section id="c3s-cds-applications-live-demo">
+<h2>C3S CDS Applications: Live Demo<a class="headerlink" href="#c3s-cds-applications-live-demo" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#%21/software/app-tourism-fire-danger-indicators-projections?tab=app">https://cds.climate.copernicus.eu/cdsapp#!/software/app-tourism-fire-danger-indicators-projections?tab=app</a></p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/cds-30.png"><img alt="_images/cds-30.png" src="_images/cds-30.png" style="width: 735.0px; height: 456.0px;" /></a>
+</figure>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "cehbrecht/jupyter-guide-to-climate-data",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="cdo-subset-cmip6.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">cdo: run subset operations (command line)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="CDS-demo.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">CDS: Live Demo</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By DKRZ<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
