@@ -311,13 +311,18 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#infilling-missing-data">
+   Infilling missing data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#clint-app">
    CLINT App
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#infill-with-clint">
-   Infill with CLINT
+  <a class="reference internal nav-link" href="#demo-infill-with-clint">
+   Demo: Infill with CLINT
   </a>
  </li>
 </ul>
@@ -340,13 +345,18 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#infilling-missing-data">
+   Infilling missing data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#clint-app">
    CLINT App
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#infill-with-clint">
-   Infill with CLINT
+  <a class="reference internal nav-link" href="#demo-infill-with-clint">
+   Demo: Infill with CLINT
   </a>
  </li>
 </ul>
@@ -366,13 +376,18 @@ title="Print to PDF"
 <li><p><a class="reference external" href="https://clint.dkrz.de/">https://clint.dkrz.de/</a></p></li>
 <li><p><a class="reference external" href="https://climateintelligence.github.io/smartduck-docs/sections/intro.html">https://climateintelligence.github.io/smartduck-docs/sections/intro.html</a></p></li>
 </ul>
+<section id="infilling-missing-data">
+<h2>Infilling missing data<a class="headerlink" href="#infilling-missing-data" title="Permalink to this headline">#</a></h2>
+<p>Gridded observational climate datasets such as HadCRUT5 often contain many missing values. To tackle this problem, it is common to fill in the gaps by using the state-of-the-art kriging interpolation or the principal component analysis-based infilling. Unfortunately, these techniques are limited by the statistical information contained in the original dataset and might not be able to efficiently reconstruct large regions of missing values and complex climatic patterns. Artificial Intelligence and more specifically deep-learning based technologies give the possibility to go beyond these techniques by learning the underlying physical patterns in the data.</p>
+<p>The method presented here is a deep-learning inpainting technique based on a U-Net architecture. It is making use of partial convolutional layers and a loss function designed to produce semantically meaningful predictions. Models are trained using climate data from reanalysis and/or historical simulations and can be used to reconstruct missing information in observational datasets with minimal computational resources.</p>
+</section>
 <section id="clint-app">
 <h2>CLINT App<a class="headerlink" href="#clint-app" title="Permalink to this headline">#</a></h2>
 <p>We have deployed the CLINT App demo on a virtual machine at <a class="reference external" href="https://www.dkrz.de/en/">DKRZ</a>.
 In the following example we run the an infill process using the CLINT app.</p>
 </section>
-<section id="infill-with-clint">
-<h2>Infill with CLINT<a class="headerlink" href="#infill-with-clint" title="Permalink to this headline">#</a></h2>
+<section id="demo-infill-with-clint">
+<h2>Demo: Infill with CLINT<a class="headerlink" href="#demo-infill-with-clint" title="Permalink to this headline">#</a></h2>
 <p>Go to the CLINT app:
 <a class="reference external" href="https://clint.dkrz.de">https://clint.dkrz.de</a></p>
 <ul class="simple">

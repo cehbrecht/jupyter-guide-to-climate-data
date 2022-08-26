@@ -427,6 +427,10 @@ title="Print to PDF"
 <span class="n">cd</span> <span class="n">jupyter</span><span class="o">-</span><span class="n">guide</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">climate</span><span class="o">-</span><span class="n">data</span>
 </pre></div>
 </div>
+<p>To use the jupyter kernel we provide, create a link as follows:</p>
+<p><code class="docutils literal notranslate"><span class="pre">ln</span> <span class="pre">-s</span> <span class="pre">/work/bm0021/conda-envs-public/kernels/share/jupyter/kernels/summerschool_2022</span> <span class="pre">${HOME}/.local/share/jupyter/kernels/summerschool_2022</span></code></p>
+<p>Then, open notebooks in Jupyter and choose kernel “summerschool_2022”</p>
+<p><strong>Alternatively</strong>, to create your own conda environment and jupyter kernel, follow the steps below:</p>
 <p>Init conda:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">init</span> <span class="n">bash</span>
 <span class="n">source</span> <span class="o">~/.</span><span class="n">bashrc</span>
@@ -439,9 +443,41 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>Make kernel:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">ipykernel</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="o">--</span><span class="n">name</span> <span class="s2">&quot;summerschool_2022&quot;</span> <span class="o">--</span><span class="n">display</span><span class="o">-</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;summerschool_2022&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">ipykernel</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="o">--</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;summerschool_2022&quot;</span> <span class="o">--</span><span class="n">display</span><span class="o">-</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;summerschool_2022&quot;</span>
 </pre></div>
 </div>
+<p>Set environment variables using one of the following options:</p>
+<ul>
+<li><p>Option 1) Always add and execute a cell at the top of the current jupyter notebook containing the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set necessary environment variables:</span>
+<span class="kn">import</span> <span class="nn">conda</span><span class="o">,</span> <span class="nn">os</span>
+<span class="n">conda_file_dir</span> <span class="o">=</span> <span class="n">conda</span><span class="o">.</span><span class="vm">__file__</span>
+<span class="n">conda_dir</span> <span class="o">=</span> <span class="n">conda_file_dir</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;lib&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">proj_lib</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">conda_dir</span><span class="p">,</span> <span class="s1">&#39;share&#39;</span><span class="p">),</span> <span class="s1">&#39;proj&#39;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PROJ_LIB&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">proj_lib</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">os</span><span class="o">.</span><span class="n">pathsep</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">conda_dir</span><span class="p">,</span> <span class="s1">&#39;bin&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Option 2) Preferably, add the environment variable definition to the kernel.json of your just created jupyter kernel:
+kernel.json per default located at <code class="docutils literal notranslate"><span class="pre">$HOME/.local/share/jupyter/kernels/summerschool_2022/kernel.json</span></code>
+Add the <code class="docutils literal notranslate"><span class="pre">&quot;env&quot;</span></code> section below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+ <span class="s2">&quot;argv&quot;</span><span class="p">:</span> <span class="p">[</span>
+  <span class="o">...</span>
+ <span class="p">],</span>
+ <span class="s2">&quot;env&quot;</span><span class="p">:</span>
+ <span class="p">{</span>
+  <span class="s2">&quot;PATH&quot;</span><span class="p">:</span><span class="s2">&quot;$</span><span class="si">{PATH}</span><span class="s2">:$</span><span class="si">{HOME}</span><span class="s2">/.conda/envs/summerschool_2022/bin&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;PROJ_LIB&quot;</span><span class="p">:</span><span class="s2">&quot;$</span><span class="si">{HOME}</span><span class="s2">/.conda/envs/summerschool_2022/share/proj&quot;</span>
+ <span class="p">},</span>
+ <span class="s2">&quot;display_name&quot;</span><span class="p">:</span> <span class="s2">&quot;summerschool_2022&quot;</span><span class="p">,</span>
+ <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
 <p>Open notebooks in Jupyter and choose kernel “summerschool_2022”</p>
 </section>
 </section>
