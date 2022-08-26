@@ -25,7 +25,7 @@ Select:
 * Level:      1000 hPa
 * Variable:   Air temperature
 * Model:      MPI-ESM1-2-HR (Germany)
-* Temporal range:    2000-01-01/2000-01-31
+* Temporal range:    2000-01-01/2000-12-31
 * Area (Africa): -40W, 70E, 70N, -40S
 
 Click on "Submit Form".
@@ -80,11 +80,9 @@ On the right side, you will see an option to download the requested CMIP6 data.
 Combine the download request with plotting the data.
 You can extend the cdstoolbox request code and with code to plot the data.
 Paste the following code in the Application Window and click on *Run*. 
-```
+```python
 import cdstoolbox as ct
 
-
-TODO
 @ct.application(title='Plot CMIP6')
 @ct.output.figure()
 @ct.output.download()
@@ -105,7 +103,6 @@ def download_application():
         }
     )
 
-
     fig = ct.map.plot(data, title="CMIP6 Plot")
     return fig
 ```
@@ -120,7 +117,20 @@ Use the CMIP6 dataset (see above). Follow the same steps, but click on *Show API
 
 Copy the API data request code:
 ```python
-TODO
+import cdsapi
+
+c = cdsapi.Client()
+
+c.retrieve(
+    'projections-cmip6',
+    {
+        'temporal_resolution': 'monthly',
+        'experiment': 'historical',
+        'level': '1000',
+        'variable': 'air_temperature',
+        'model': 'mpi_esm1_2_hr',
+        'date': '2000-01-01/2000-12-31',
+        'area': [
             70, -40, -40,
             70,
         ],
