@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>CLINT - Climate Intelligence &#8212; Jupyter Guide to Climate Data</title>
+    <title>CLINT - Demo &#8212; Jupyter Guide to Climate Data</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -50,12 +50,9 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="CLINT - Demo" href="CLINT-demo.html" />
-    <link rel="prev" title="Provenance Demo" href="PROV.html" />
+    <link rel="prev" title="CLINT - Climate Intelligence" href="CLINT.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -176,13 +173,13 @@ const thebe_selector_output = ".output, .cell_output"
    Provenance Demo
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="CLINT.html">
    CLINT - Climate Intelligence
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="CLINT-demo.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    CLINT - Demo
   </a>
  </li>
@@ -259,7 +256,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/CLINT.md"
+        <a href="_sources/CLINT-demo.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -324,23 +321,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#crai-climate-reconstruction-ai">
-   CRAI (Climate Reconstruction AI)
+  <a class="reference internal nav-link" href="#clint-app">
+   CLINT App
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-method">
-   The method
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#installation">
-   Installation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#usage">
-   Usage
+  <a class="reference internal nav-link" href="#demo-infill-with-clint">
+   Demo: Infill with CLINT
   </a>
  </li>
 </ul>
@@ -352,7 +339,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>CLINT - Climate Intelligence</h1>
+                <h1>CLINT - Demo</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -368,23 +355,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#crai-climate-reconstruction-ai">
-   CRAI (Climate Reconstruction AI)
+  <a class="reference internal nav-link" href="#clint-app">
+   CLINT App
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-method">
-   The method
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#installation">
-   Installation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#usage">
-   Usage
+  <a class="reference internal nav-link" href="#demo-infill-with-clint">
+   Demo: Infill with CLINT
   </a>
  </li>
 </ul>
@@ -397,8 +374,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="clint-climate-intelligence">
-<h1>CLINT - Climate Intelligence<a class="headerlink" href="#clint-climate-intelligence" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="clint-demo">
+<h1>CLINT - Demo<a class="headerlink" href="#clint-demo" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
 <li><p><a class="reference external" href="https://climateintelligence.eu/">https://climateintelligence.eu/</a></p></li>
 <li><p><a class="reference external" href="https://clint.dkrz.de/">https://clint.dkrz.de/</a></p></li>
@@ -409,98 +386,57 @@ title="Print to PDF"
 <p>Gridded observational climate datasets such as HadCRUT5 often contain many missing values. To tackle this problem, it is common to fill in the gaps by using the state-of-the-art kriging interpolation or the principal component analysis-based infilling. Unfortunately, these techniques are limited by the statistical information contained in the original dataset and might not be able to efficiently reconstruct large regions of missing values and complex climatic patterns. Artificial Intelligence and more specifically deep-learning based technologies give the possibility to go beyond these techniques by learning the underlying physical patterns in the data.</p>
 <p>The method presented here is a deep-learning inpainting technique based on a U-Net architecture. It is making use of partial convolutional layers and a loss function designed to produce semantically meaningful predictions. Models are trained using climate data from reanalysis and/or historical simulations and can be used to reconstruct missing information in observational datasets with minimal computational resources.</p>
 </section>
-<section id="crai-climate-reconstruction-ai">
-<h2>CRAI (Climate Reconstruction AI)<a class="headerlink" href="#crai-climate-reconstruction-ai" title="Permalink to this headline">#</a></h2>
-<p><a class="reference external" href="https://github.com/FREVA-CLINT/climatereconstructionAI/tree/clint">CRAI</a> is a state-of-the-art deep learning based inpainting technology to infill missing values in climate datasets.</p>
+<section id="clint-app">
+<h2>CLINT App<a class="headerlink" href="#clint-app" title="Permalink to this headline">#</a></h2>
+<p>We have deployed the CLINT App demo on a virtual machine at <a class="reference external" href="https://www.dkrz.de/en/">DKRZ</a>.
+In the following example we run the an infill process using the CLINT app.</p>
 </section>
-<section id="the-method">
-<h2>The method<a class="headerlink" href="#the-method" title="Permalink to this headline">#</a></h2>
-<p>The infilling algorithm is trained with complete climate datasets and masks defining realistic regions of missing observational data.</p>
+<section id="demo-infill-with-clint">
+<h2>Demo: Infill with CLINT<a class="headerlink" href="#demo-infill-with-clint" title="Permalink to this headline">#</a></h2>
+<p>Go to the CLINT app:
+<a class="reference external" href="https://clint.dkrz.de">https://clint.dkrz.de</a></p>
+<ul class="simple">
+<li><p>Choose the <em>Duck</em> processing service</p></li>
+</ul>
 <figure class="align-default">
-<img alt="_images/pconv-unet.png" src="_images/pconv-unet.png" />
+<a class="reference internal image-reference" href="_images/phoenix-duck-wps.png"><img alt="_images/phoenix-duck-wps.png" src="_images/phoenix-duck-wps.png" style="width: 370.0px; height: 277.0px;" /></a>
 </figure>
-<p>As shown in the figure, the neural network has a U-net architecture and makes use of <em>partial convolutional layers</em> instead of standard convolution layers. A <em>partial convolutional layer</em> is a combination of two successive operations:</p>
 <ul class="simple">
-<li><p>a partial convolution:
-<span class="math notranslate nohighlight">\(x'=\left\{\begin{array}{ll}\boldsymbol{W}^T\left(\boldsymbol{X}\odot\boldsymbol{M}\right) \frac{\text{sum}(\boldsymbol{1})}{\text{sum}(\boldsymbol{M})} +b, &amp; \text{if sum}(\boldsymbol{M})&gt;0 \\ 0, &amp;\text{otherwise}\end{array}\right.\)</span></p></li>
-<li><p>a mask update:
-<span class="math notranslate nohighlight">\(m'=\left\{\begin{array}{ll}1, &amp; \text{if sum}(\boldsymbol{M})&gt;0 \\ 0, &amp;\text{otherwise}\end{array}\right.\)</span></p></li>
+<li><p>Use the <em>ClintAI</em> process</p></li>
 </ul>
-<p>where <span class="math notranslate nohighlight">\(\boldsymbol{W}\)</span> are the convolution filter weights, <span class="math notranslate nohighlight">\(\boldsymbol{X}\)</span> the feature values, <span class="math notranslate nohighlight">\(\boldsymbol{M}\)</span> the binary mask values and <span class="math notranslate nohighlight">\(b\)</span> the bias.</p>
-<p>Compared to other inpainting methods <a class="footnote-reference brackets" href="#id2" id="id1">1</a>, the partial convolution technique offers several advantages:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/phoenix-duck-processes.png"><img alt="_images/phoenix-duck-processes.png" src="_images/phoenix-duck-processes.png" style="width: 775.0px; height: 443.0px;" /></a>
+</figure>
 <ul class="simple">
-<li><p>it operates robustly on irregular holes</p></li>
-<li><p>it can infill large holes</p></li>
-<li><p>it produces semantically meaningful predictions</p></li>
+<li><p>Select a HadCRUT5 dataset for the infill process</p></li>
 </ul>
-</section>
-<section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h2>
-<p>CRAI is written in Python and based on the PyTorch framework and the NVIDIA CUDA® Deep Neural Network library (cuDNN). It is licensed under the terms of the BSD 3-Clause.</p>
-<p>Step 1: clone the branch of the repository:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone -b clint --single-branch https://github.com/FREVA-CLINT/climatereconstructionAI.git
-</pre></div>
-</div>
-<p>Step 2: create en environment with all the required dependencies using Anaconda</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda env create -f environment.yml
-</pre></div>
-</div>
-<p>Step3: activate the environment</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda activate crai
-</pre></div>
-</div>
-<p>Step4: install the Python package using pip</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install .
-</pre></div>
-</div>
-</section>
-<section id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">#</a></h2>
-<p>The software can be used to:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/phoenix-duck-infill.png"><img alt="_images/phoenix-duck-infill.png" src="_images/phoenix-duck-infill.png" style="width: 1174.0px; height: 516.0px;" /></a>
+</figure>
 <ul class="simple">
-<li><p>train a model (<strong>training</strong>)</p></li>
-<li><p>infill climate datasets using a trained model (<strong>evaluation</strong>)</p></li>
+<li><p>Wait for the process to finish …</p></li>
 </ul>
-<p>It can be used as:</p>
-<ul>
-<li><p>a command line interface (CLI):</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/phoenix-duck-monitor.png"><img alt="_images/phoenix-duck-monitor.png" src="_images/phoenix-duck-monitor.png" style="width: 840.0px; height: 283.0px;" /></a>
+</figure>
 <ul class="simple">
-<li><p>training:</p></li>
+<li><p>When the process has finished go then the outputs are shown</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>crai-train
-</pre></div>
-</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/phoenix-duck-outputs.png"><img alt="_images/phoenix-duck-outputs.png" src="_images/phoenix-duck-outputs.png" style="width: 919.0px; height: 678.0px;" /></a>
+</figure>
 <ul class="simple">
-<li><p>evaluation:</p></li>
+<li><p>Outputs: a plot before the infill</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>crai-evaluate
-</pre></div>
-</div>
-</li>
-<li><p>a Python library:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/duck-plot-before.png"><img alt="_images/duck-plot-before.png" src="_images/duck-plot-before.png" style="width: 387.0px; height: 304.5px;" /></a>
+</figure>
 <ul class="simple">
-<li><p>training:</p></li>
+<li><p>Outputs: a plot after the infill</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">climatereconstructionai</span> <span class="kn">import</span> <span class="n">train</span>
-<span class="n">train</span><span class="p">()</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>evaluation:</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">climatereconstructionai</span> <span class="kn">import</span> <span class="n">evaluate</span>
-<span class="n">evaluate</span><span class="p">()</span>
-</pre></div>
-</div>
-</li>
-</ul>
-<p>For more details about the execution and the input arguments, please have a look to the documentation and demo examples hosted in the <a class="reference external" href="https://github.com/FREVA-CLINT/climatereconstructionAI/tree/clint">repository</a></p>
-<hr class="footnotes docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1007/978-3-030-01252-6_6">Liu, G. <em>et al.</em>, <em>Computer Vision—ECCV 2018 Lecture Notes in Computer Science</em> 11215, 19-35 (2018)</a></p>
-</dd>
-</dl>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/duck-plot-after.png"><img alt="_images/duck-plot-after.png" src="_images/duck-plot-after.png" style="width: 387.0px; height: 304.5px;" /></a>
+</figure>
 </section>
 </section>
 
@@ -531,19 +467,12 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="PROV.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="CLINT.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Provenance Demo</p>
+            <p class="prev-next-title">CLINT - Climate Intelligence</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="CLINT-demo.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">CLINT - Demo</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
