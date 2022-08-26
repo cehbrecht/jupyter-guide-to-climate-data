@@ -136,3 +136,5 @@ _build/
 roocs_demo_prov.png
 adaptor.esgf_wps.*
 download.zip
+.CHUNK_FILE_*
+dask-worker-space/

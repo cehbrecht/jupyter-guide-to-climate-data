@@ -12,47 +12,84 @@ Gridded observational climate datasets such as HadCRUT5 often contain many missi
 The method presented here is a deep-learning inpainting technique based on a U-Net architecture. It is making use of partial convolutional layers and a loss function designed to produce semantically meaningful predictions. Models are trained using climate data from reanalysis and/or historical simulations and can be used to reconstruct missing information in observational datasets with minimal computational resources.
 
 
-## CLINT App
+## CRAI (Climate Reconstruction AI)
 
-We have deployed the CLINT App demo on a virtual machine at [DKRZ](https://www.dkrz.de/en/).
-In the following example we run the an infill process using the CLINT app.
+[CRAI](https://github.com/FREVA-CLINT/climatereconstructionAI/tree/clint) is a state-of-the-art deep learning based inpainting technology to infill missing values in climate datasets.
 
-## Demo: Infill with CLINT
+## The method
 
-Go to the CLINT app:
-https://clint.dkrz.de
+The infilling algorithm is trained with complete climate datasets and masks defining realistic regions of missing observational data.
 
-* Choose the *Duck* processing service
-```{figure} /media/phoenix-duck-wps.png
-:scale: 50%
+```{figure} /media/pconv-unet.png
 ```
 
-* Use the *ClintAI* process
-```{figure} /media/phoenix-duck-processes.png
-:scale: 50%
+As shown in the figure, the neural network has a U-net architecture and makes use of *partial convolutional layers* instead of standard convolution layers. A *partial convolutional layer* is a combination of two successive operations:
+
+- a partial convolution:
+$x'=\left\{\begin{array}{ll}\boldsymbol{W}^T\left(\boldsymbol{X}\odot\boldsymbol{M}\right) \frac{\text{sum}(\boldsymbol{1})}{\text{sum}(\boldsymbol{M})} +b, & \text{if sum}(\boldsymbol{M})>0 \\ 0, &\text{otherwise}\end{array}\right.$
+
+- a mask update:
+$m'=\left\{\begin{array}{ll}1, & \text{if sum}(\boldsymbol{M})>0 \\ 0, &\text{otherwise}\end{array}\right.$
+
+where $\boldsymbol{W}$ are the convolution filter weights, $\boldsymbol{X}$ the feature values, $\boldsymbol{M}$ the binary mask values and $b$ the bias.
+
+Compared to other inpainting methods [^1], the partial convolution technique offers several advantages:
+- it operates robustly on irregular holes
+- it can infill large holes
+- it produces semantically meaningful predictions
+
+[^1]: [Liu, G. *et al.*, *Computer Vision—ECCV 2018 Lecture Notes in Computer Science* 11215, 19-35 (2018)](https://doi.org/10.1007/978-3-030-01252-6_6)
+
+## Installation
+
+CRAI is written in Python and based on the PyTorch framework and the NVIDIA CUDA® Deep Neural Network library (cuDNN). It is licensed under the terms of the BSD 3-Clause.
+
+Step 1: clone the branch of the repository:
+```bash
+git clone -b clint --single-branch https://github.com/FREVA-CLINT/climatereconstructionAI.git
 ```
 
-* Select a HadCRUT5 dataset for the infill process
-```{figure} /media/phoenix-duck-infill.png
-:scale: 50%
+Step 2: create en environment with all the required dependencies using Anaconda
+```bash
+conda env create -f environment.yml
 ```
 
-* Wait for the process to finish ...
-```{figure} /media/phoenix-duck-monitor.png
-:scale: 50%
+Step3: activate the environment
+```bash
+conda activate crai
 ```
 
-* When the process has finished go then the outputs are shown
-```{figure} /media/phoenix-duck-outputs.png
-:scale: 50%
+Step4: install the Python package using pip
+```bash
+pip install .
 ```
 
-* Outputs: a plot before the infill
-```{figure} /media/duck-plot-before.png
-:scale: 50%
-```
+## Usage
 
-* Outputs: a plot after the infill
-```{figure} /media/duck-plot-after.png
-:scale: 50%
-```
+The software can be used to:
+- train a model (**training**)
+- infill climate datasets using a trained model (**evaluation**)
+
+It can be used as:
+- a command line interface (CLI):
+  - training:
+  ```bash
+  crai-train
+  ```
+  - evaluation:
+  ```bash
+  crai-evaluate
+  ```
+- a Python library:
+  - training:
+  ```python
+  from climatereconstructionai import train
+  train()
+  ```
+  - evaluation:
+  ```python
+  from climatereconstructionai import evaluate
+  evaluate()
+  ```
+
+For more details about the execution and the input arguments, please have a look to the documentation and demo examples hosted in the [repository](https://github.com/FREVA-CLINT/climatereconstructionAI/tree/clint)
