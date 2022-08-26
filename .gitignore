@@ -138,3 +138,5 @@ adaptor.esgf_wps.*
 download.zip
 .CHUNK_FILE_*
 dask-worker-space/
+*.ESMF_LogFile
+*.tif
