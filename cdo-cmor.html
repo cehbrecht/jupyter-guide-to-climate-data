@@ -184,6 +184,11 @@ const thebe_selector_output = ".output, .cell_output"
    CLINT - Demo
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gis.html">
+   Prepare modeling data for GIS analyses
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -876,7 +881,10 @@ The above information is entered in the mapping table:</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In reading info table:
-          Open failed on /home/k/k204199/jupyter-guide-to-climate-data/.cdocmorinfo: No such file or directory.<span class=" -Color -Color-Green">cdo    cmor: </span>MIP table file = &#39;/pool/data/CMIP6/cmip6-cmor-tables/Tables//CMIP6_Amon.json&#39;
+          Open failed on /home/k/k204199/jupyter-guide-to-climate-data/.cdocmorinfo: No such file or directory.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">cdo    cmor: </span>MIP table file = &#39;/pool/data/CMIP6/cmip6-cmor-tables/Tables//CMIP6_Amon.json&#39;
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">cdo    cmor: </span>Attribute &#39;time_units&#39; = &#39;days since 1850-1-1 00:00:00&#39;
@@ -888,9 +896,7 @@ The above information is entered in the mapping table:</p>
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">cdo    cmor: </span>     File stored in:  &#39;./archive/CMIP6/CMIP/MPI-M/MPI-ESM1-2-LR/historical/r1i1p1f1/Amon/tas/gn/v20220901/tas_Amon_MPI-ESM1-2-LR_historical_r1i1p1f1_gn_185001-185012.nc&#39; with cmor!
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">cdo    cmor: </span>Processed 221184 values from 715 variables over 12 timesteps [0.44s 465MB].
+<span class=" -Color -Color-Green">cdo    cmor: </span>Processed 221184 values from 715 variables over 12 timesteps [0.94s 465MB].
 </pre></div>
 </div>
 </div>
@@ -948,7 +954,7 @@ variables:
 		tas:units = &quot;K&quot; ;
 		tas:cell_methods = &quot;area: time: mean&quot; ;
 		tas:cell_measures = &quot;area: areacella&quot; ;
-		tas:history = &quot;2022-08-26T07:11:55Z altered by CMOR: Treated scalar dimension: \&#39;height\&#39;. 2022-08-26T07:11:55Z altered by CMOR: replaced missing value flag (-9e+33) and corresponding data with standard missing value (1e+20). 2022-08-26T07:11:55Z altered by CMOR: Inverted axis: lat.&quot; ;
+		tas:history = &quot;2022-08-26T15:50:35Z altered by CMOR: Treated scalar dimension: \&#39;height\&#39;. 2022-08-26T15:50:35Z altered by CMOR: replaced missing value flag (-9e+33) and corresponding data with standard missing value (1e+20). 2022-08-26T15:50:35Z altered by CMOR: Inverted axis: lat.&quot; ;
 		tas:coordinates = &quot;height&quot; ;
 		tas:missing_value = 1.e+20f ;
 		tas:_FillValue = 1.e+20f ;
@@ -961,7 +967,7 @@ variables:
 		:branch_time_in_child = 0. ;
 		:branch_time_in_parent = 0. ;
 		:contact = &quot;cmip6-mpi-esm@dkrz.de&quot; ;
-		:creation_date = &quot;2022-08-26T07:11:55Z&quot; ;
+		:creation_date = &quot;2022-08-26T15:50:35Z&quot; ;
 		:data_specs_version = &quot;01.00.30&quot; ;
 		:experiment = &quot;all-forcing simulation of the recent past&quot; ;
 		:experiment_id = &quot;historical&quot; ;
@@ -971,7 +977,7 @@ variables:
 		:further_info_url = &quot;https://furtherinfo.es-doc.org/CMIP6.MPI-M.MPI-ESM1-2-LR.historical.none.r1i1p1f1&quot; ;
 		:grid = &quot;gn&quot; ;
 		:grid_label = &quot;gn&quot; ;
-		:history = &quot;2022-08-26T07:11:55Z ; CMOR rewrote data to be consistent with CMIP6, CF-1.7 CMIP-6.2 and CF standards.&quot; ;
+		:history = &quot;2022-08-26T15:50:35Z ; CMOR rewrote data to be consistent with CMIP6, CF-1.7 CMIP-6.2 and CF standards.&quot; ;
 		:initialization_index = 1 ;
 		:institution = &quot;Max Planck Institute for Meteorology, Hamburg 20146, Germany&quot; ;
 		:institution_id = &quot;MPI-M&quot; ;
@@ -1010,7 +1016,7 @@ variables:
 		:variant_label = &quot;r1i1p1f1&quot; ;
 		:license = &quot;CMIP6 model data produced by MPI-M is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses). Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6 output, including citation requirements and proper acknowledgment. Further information about this data, including some limitations, can be found via the further_info_url (recorded as a global attribute in this file) and. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law.&quot; ;
 		:cmor_version = &quot;3.6.0&quot; ;
-		:tracking_id = &quot;hdl:21.14100/3e80c920-c10e-47a7-90b4-656104ba9739&quot; ;
+		:tracking_id = &quot;hdl:21.14100/44ba68e3-fc23-4f79-954a-471cd240b4b9&quot; ;
 }
 </pre></div>
 </div>
@@ -2969,7 +2975,7 @@ In reading info table:
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">cdo    cmor: </span>     File stored in:  &#39;./archive/CMIP6/CMIP/MPI-M/MPI-ESM1-2-LR/historical/r1i1p1f1/Amon/pr/gn/v20220901/pr_Amon_MPI-ESM1-2-LR_historical_r1i1p1f1_gn_185001-185012.nc&#39; with cmor!
 <span class=" -Color -Color-Green">cdo(1) expr: </span>Processed 442368 values from 143 variables over 12 timesteps.
-<span class=" -Color -Color-Green">cdo    cmor: </span>Processed 221184 values from 5 variables over 12 timesteps [0.23s 466MB].
+<span class=" -Color -Color-Green">cdo    cmor: </span>Processed 221184 values from 5 variables over 12 timesteps [0.24s 466MB].
 </pre></div>
 </div>
 </div>
@@ -3022,7 +3028,7 @@ variables:
 		pr:original_name = &quot;pr&quot; ;
 		pr:cell_methods = &quot;area: time: mean&quot; ;
 		pr:cell_measures = &quot;area: areacella&quot; ;
-		pr:history = &quot;2022-08-26T07:12:00Z altered by CMOR: replaced missing value flag (-9e+33) and corresponding data with standard missing value (1e+20). 2022-08-26T07:12:00Z altered by CMOR: Inverted axis: lat.&quot; ;
+		pr:history = &quot;2022-08-26T15:50:41Z altered by CMOR: replaced missing value flag (-9e+33) and corresponding data with standard missing value (1e+20). 2022-08-26T15:50:41Z altered by CMOR: Inverted axis: lat.&quot; ;
 		pr:missing_value = 1.e+20f ;
 		pr:_FillValue = 1.e+20f ;
 
@@ -3034,7 +3040,7 @@ variables:
 		:branch_time_in_child = 0. ;
 		:branch_time_in_parent = 0. ;
 		:contact = &quot;cmip6-mpi-esm@dkrz.de&quot; ;
-		:creation_date = &quot;2022-08-26T07:12:00Z&quot; ;
+		:creation_date = &quot;2022-08-26T15:50:41Z&quot; ;
 		:data_specs_version = &quot;01.00.30&quot; ;
 		:experiment = &quot;all-forcing simulation of the recent past&quot; ;
 		:experiment_id = &quot;historical&quot; ;
@@ -3044,7 +3050,7 @@ variables:
 		:further_info_url = &quot;https://furtherinfo.es-doc.org/CMIP6.MPI-M.MPI-ESM1-2-LR.historical.none.r1i1p1f1&quot; ;
 		:grid = &quot;gn&quot; ;
 		:grid_label = &quot;gn&quot; ;
-		:history = &quot;2022-08-26T07:12:00Z ; CMOR rewrote data to be consistent with CMIP6, CF-1.7 CMIP-6.2 and CF standards.&quot; ;
+		:history = &quot;2022-08-26T15:50:41Z ; CMOR rewrote data to be consistent with CMIP6, CF-1.7 CMIP-6.2 and CF standards.&quot; ;
 		:initialization_index = 1 ;
 		:institution = &quot;Max Planck Institute for Meteorology, Hamburg 20146, Germany&quot; ;
 		:institution_id = &quot;MPI-M&quot; ;
@@ -3083,7 +3089,7 @@ variables:
 		:variant_label = &quot;r1i1p1f1&quot; ;
 		:license = &quot;CMIP6 model data produced by MPI-M is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses). Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6 output, including citation requirements and proper acknowledgment. Further information about this data, including some limitations, can be found via the further_info_url (recorded as a global attribute in this file) and. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law.&quot; ;
 		:cmor_version = &quot;3.6.0&quot; ;
-		:tracking_id = &quot;hdl:21.14100/2f1125d1-364e-4c93-9a11-804bc45e8549&quot; ;
+		:tracking_id = &quot;hdl:21.14100/f1cbbca8-f23f-4478-8fb1-b18f30f4172a&quot; ;
 }
 </pre></div>
 </div>
@@ -3181,7 +3187,10 @@ variables:
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In reading info table:
-          Open failed on /home/k/k204199/jupyter-guide-to-climate-data/.cdocmorinfo: No such file or directory.<span class=" -Color -Color-Green">cdo    cmor: </span>MIP table file = &#39;/pool/data/CMIP6/cmip6-cmor-tables/Tables//CMIP6_Omon.json&#39;
+          Open failed on /home/k/k204199/jupyter-guide-to-climate-data/.cdocmorinfo: No such file or directory.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">cdo    cmor: </span>MIP table file = &#39;/pool/data/CMIP6/cmip6-cmor-tables/Tables//CMIP6_Omon.json&#39;
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">cdo    cmor: </span>Attribute &#39;time_units&#39; = &#39;days since 1850-1-1 00:00:00&#39;
@@ -3195,11 +3204,13 @@ variables:
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">cdo    cmor (Warning): </span>Could not use zaxis from file &#39;/work/bm0021/workshopcmip6pp2022/config/gridinfo_mpiom_no3.nc&#39; configured via attribute &#39;ginfo&#39;
           because total size of infile: &#39;1&#39; is not identical to total size of ginfo file: &#39;40&#39;.
-<span class=" -Color -Color-Green">cdo    cmor: </span>Vertical axis is either default and scalar or not available.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">cdo    cmor: </span>Vertical axis is either default and scalar or not available.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">cdo    cmor: </span>     File stored in:  &#39;./archive/CMIP6/CMIP/MPI-M/MPI-ESM1-2-LR/historical/r1i1p1f1/Omon/tos/gn/v20220901/tos_Omon_MPI-ESM1-2-LR_historical_r1i1p1f1_gn_185001-185012.nc&#39; with cmor!
-<span class=" -Color -Color-Green">cdo    cmor: </span>Processed 675840 values from 564 variables over 12 timesteps [0.47s 530MB].
+<span class=" -Color -Color-Green">cdo    cmor: </span>Processed 675840 values from 564 variables over 12 timesteps [0.74s 530MB].
 </pre></div>
 </div>
 </div>
@@ -3267,7 +3278,7 @@ variables:
 		tos:original_name = &quot;tos&quot; ;
 		tos:cell_methods = &quot;area: mean where sea time: mean&quot; ;
 		tos:cell_measures = &quot;area: areacello&quot; ;
-		tos:history = &quot;2022-08-26T07:12:01Z altered by CMOR: replaced missing value flag (-9e+33) and corresponding data with standard missing value (1e+20).&quot; ;
+		tos:history = &quot;2022-08-26T15:50:42Z altered by CMOR: replaced missing value flag (-9e+33) and corresponding data with standard missing value (1e+20).&quot; ;
 		tos:missing_value = 1.e+20f ;
 		tos:_FillValue = 1.e+20f ;
 		tos:coordinates = &quot;latitude longitude&quot; ;
@@ -3280,7 +3291,7 @@ variables:
 		:branch_time_in_child = 0. ;
 		:branch_time_in_parent = 0. ;
 		:contact = &quot;cmip6-mpi-esm@dkrz.de&quot; ;
-		:creation_date = &quot;2022-08-26T07:12:01Z&quot; ;
+		:creation_date = &quot;2022-08-26T15:50:42Z&quot; ;
 		:data_specs_version = &quot;01.00.30&quot; ;
 		:experiment = &quot;all-forcing simulation of the recent past&quot; ;
 		:experiment_id = &quot;historical&quot; ;
@@ -3290,7 +3301,7 @@ variables:
 		:further_info_url = &quot;https://furtherinfo.es-doc.org/CMIP6.MPI-M.MPI-ESM1-2-LR.historical.none.r1i1p1f1&quot; ;
 		:grid = &quot;gn&quot; ;
 		:grid_label = &quot;gn&quot; ;
-		:history = &quot;2022-08-26T07:12:01Z ; CMOR rewrote data to be consistent with CMIP6, CF-1.7 CMIP-6.2 and CF standards.&quot; ;
+		:history = &quot;2022-08-26T15:50:42Z ; CMOR rewrote data to be consistent with CMIP6, CF-1.7 CMIP-6.2 and CF standards.&quot; ;
 		:initialization_index = 1 ;
 		:institution = &quot;Max Planck Institute for Meteorology, Hamburg 20146, Germany&quot; ;
 		:institution_id = &quot;MPI-M&quot; ;
@@ -3329,7 +3340,7 @@ variables:
 		:variant_label = &quot;r1i1p1f1&quot; ;
 		:license = &quot;CMIP6 model data produced by MPI-M is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses). Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6 output, including citation requirements and proper acknowledgment. Further information about this data, including some limitations, can be found via the further_info_url (recorded as a global attribute in this file) and. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law.&quot; ;
 		:cmor_version = &quot;3.6.0&quot; ;
-		:tracking_id = &quot;hdl:21.14100/572fb2da-f417-44e4-a8e3-b2aa06f824ec&quot; ;
+		:tracking_id = &quot;hdl:21.14100/6e305052-6e6b-4204-a704-76942d2f1f8e&quot; ;
 }
 </pre></div>
 </div>
@@ -3424,14 +3435,12 @@ In reading info table:
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">cdo    cmor: </span>Successfully substituted zaxis.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">cdo    cmor: </span>Attribute &#39;z_axis&#39; = &#39;depth&#39;
+<span class=" -Color -Color-Green">cdo    cmor: </span>Attribute &#39;z_axis&#39; = &#39;depth&#39;
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">cdo    cmor: </span>     File stored in:  &#39;./archive/CMIP6/CMIP/MPI-M/MPI-ESM1-2-LR/historical/r1i1p1f1/Omon/o2sat/gn/v20220901/o2sat_Omon_MPI-ESM1-2-LR_historical_r1i1p1f1_gn_185001-185001.nc&#39; with cmor!
 <span class=" -Color -Color-Green">cdo(1) expr: </span>Processed 4505600 values from 30 variables over 1 timestep.
-<span class=" -Color -Color-Green">cdo    cmor: </span>Processed 2252800 values from 6 variables over 1 timestep [1.01s 722MB].
+<span class=" -Color -Color-Green">cdo    cmor: </span>Processed 2252800 values from 6 variables over 1 timestep [1.10s 722MB].
 </pre></div>
 </div>
 </div>
@@ -3508,7 +3517,7 @@ variables:
 		o2sat:original_name = &quot;o2sat&quot; ;
 		o2sat:cell_methods = &quot;area: mean where sea time: mean&quot; ;
 		o2sat:cell_measures = &quot;area: areacello volume: volcello&quot; ;
-		o2sat:history = &quot;2022-08-26T07:12:03Z altered by CMOR: replaced missing value flag (-9e+33) and corresponding data with standard missing value (1e+20).&quot; ;
+		o2sat:history = &quot;2022-08-26T15:50:44Z altered by CMOR: replaced missing value flag (-9e+33) and corresponding data with standard missing value (1e+20).&quot; ;
 		o2sat:missing_value = 1.e+20f ;
 		o2sat:_FillValue = 1.e+20f ;
 		o2sat:coordinates = &quot;latitude longitude&quot; ;
@@ -3521,7 +3530,7 @@ variables:
 		:branch_time_in_child = 0. ;
 		:branch_time_in_parent = 0. ;
 		:contact = &quot;cmip6-mpi-esm@dkrz.de&quot; ;
-		:creation_date = &quot;2022-08-26T07:12:04Z&quot; ;
+		:creation_date = &quot;2022-08-26T15:50:45Z&quot; ;
 		:data_specs_version = &quot;01.00.30&quot; ;
 		:experiment = &quot;all-forcing simulation of the recent past&quot; ;
 		:experiment_id = &quot;historical&quot; ;
@@ -3531,7 +3540,7 @@ variables:
 		:further_info_url = &quot;https://furtherinfo.es-doc.org/CMIP6.MPI-M.MPI-ESM1-2-LR.historical.none.r1i1p1f1&quot; ;
 		:grid = &quot;gn&quot; ;
 		:grid_label = &quot;gn&quot; ;
-		:history = &quot;2022-08-26T07:12:04Z ; CMOR rewrote data to be consistent with CMIP6, CF-1.7 CMIP-6.2 and CF standards.&quot; ;
+		:history = &quot;2022-08-26T15:50:45Z ; CMOR rewrote data to be consistent with CMIP6, CF-1.7 CMIP-6.2 and CF standards.&quot; ;
 		:initialization_index = 1 ;
 		:institution = &quot;Max Planck Institute for Meteorology, Hamburg 20146, Germany&quot; ;
 		:institution_id = &quot;MPI-M&quot; ;
@@ -3566,7 +3575,7 @@ variables:
 		:table_id = &quot;Omon&quot; ;
 		:table_info = &quot;Creation Date:(09 May 2019) MD5:5f007c16960eee824e07a4ce809e3ed1&quot; ;
 		:title = &quot;MPI-ESM1-2-LR output prepared for CMIP6&quot; ;
-		:tracking_id = &quot;hdl:21.14100/2ad51eb1-4646-4c1d-abd4-c03870ba31f2&quot; ;
+		:tracking_id = &quot;hdl:21.14100/b67c4b23-8d09-4abc-8d4e-a84aac2693dd&quot; ;
 		:variable_id = &quot;o2sat&quot; ;
 		:variant_label = &quot;r1i1p1f1&quot; ;
 		:license = &quot;CMIP6 model data produced by MPI-M is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses). Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6 output, including citation requirements and proper acknowledgment. Further information about this data, including some limitations, can be found via the further_info_url (recorded as a global attribute in this file) and. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law.&quot; ;
