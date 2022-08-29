@@ -331,6 +331,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#freeze-conda-environment">
+   Freeze conda environment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#working-on-levante-at-dkrz">
    Working on Levante at DKRZ
   </a>
@@ -362,6 +367,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#publish-book-to-gh-pages">
    Publish book to gh-pages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#freeze-conda-environment">
+   Freeze conda environment
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -426,6 +436,17 @@ title="Print to PDF"
 </div>
 <p>… or use make:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">publish</span>
+</pre></div>
+</div>
+</section>
+<section id="freeze-conda-environment">
+<h2>Freeze conda environment<a class="headerlink" href="#freeze-conda-environment" title="Permalink to this headline">#</a></h2>
+<p>Update conda spec list on levante:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="nb">list</span> <span class="o">-</span><span class="n">n</span> <span class="n">summerschool_2022</span> <span class="o">--</span><span class="n">explicit</span> <span class="o">&gt;</span> <span class="n">spec</span><span class="o">-</span><span class="nb">list</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>You can use this spec-list.txt to create a new environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">env</span> <span class="n">create</span> <span class="o">-</span><span class="n">f</span> <span class="n">spec</span><span class="o">-</span><span class="nb">list</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 </section>

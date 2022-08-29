@@ -60,6 +60,18 @@ ghp-import -n -p -f _build/html
 make publish
 ```
 
+## Freeze conda environment
+
+Update conda spec list on levante:
+```
+conda list -n summerschool_2022 --explicit > spec-list.txt
+```
+
+You can use this spec-list.txt to create a new environment:
+```
+conda env create -f spec-list.txt
+```
+
 
 ## Working on Levante at DKRZ
 
