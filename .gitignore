@@ -140,3 +140,4 @@ download.zip
 dask-worker-space/
 *.ESMF_LogFile
 *.tif
+download.tar.gz

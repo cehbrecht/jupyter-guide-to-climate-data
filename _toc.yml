@@ -16,3 +16,4 @@ chapters:
 - file: CLINT
 - file: CLINT-demo
 - file: gis
+- file: validation-with-obs
